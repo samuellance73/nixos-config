@@ -34,6 +34,7 @@
     ".local/share/containers"
     ".local/share/distrobox"
     ".local/share/keyrings"
+    ".ssh"
 
     "Safe"
     ".var/app/app.zen_browser.zen"
