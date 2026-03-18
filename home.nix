@@ -40,7 +40,11 @@
     ];
   };
     
-
+    programs.git = {
+    enable = true;
+    userName = "TrueKing"; # Change to your name
+    userEmail = "samuellance73@gmail.com"; # Change to your email
+    };
   home.stateVersion = "25.11";
 
      
