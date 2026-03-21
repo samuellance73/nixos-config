@@ -75,8 +75,8 @@
         "gats.io"
         "www.buildroyale.io"
         "buildroyale.io"
-        "youtube.com"
-        "www.youtube.com"
+        "wyoutube.com"
+        "www.wyoutube.com"
       ];
     };
   };
