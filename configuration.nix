@@ -129,7 +129,7 @@
 
   programs = {
     nh.enable = true;
-    vscode.enable = true;
+    
     git.enable = true;
     nix-ld.enable = true;
 
@@ -153,6 +153,7 @@
     neovim
     protonvpn-gui
     steam-run
+    vscode-fhs
     vim
     wget
   ];
