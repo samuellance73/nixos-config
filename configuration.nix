@@ -25,6 +25,9 @@
 
   services.fwupd.enable = true;
   services.power-profiles-daemon.enable = true;
+  hardware.bluetooth = {
+     enable = true;
+  };
 
   # ==========================================
   # FILE SYSTEMS & STORAGE
@@ -100,7 +103,7 @@
     displayManager.gdm.enable = true;
     # desktopManager.gnome.enable = true;
   };
-
+  services.blueman.enable = true;
   programs.hyprland = {
     enable = true;
     # xwayland.enable = true; # Enabled by default, useful for older apps
@@ -182,7 +185,7 @@
     wl-clipboard
     pavucontrol
     networkmanagerapplet
-    kdePackages.dolphin
+    
     
   ];
 

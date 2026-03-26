@@ -36,6 +36,7 @@
     ".local/share/keyrings"
     ".ssh"
     ".config/hypr"
+    ".config/waybar" 
     "Safe"
     ".var/app/app.zen_browser.zen"
     ];
