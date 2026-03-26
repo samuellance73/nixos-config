@@ -147,7 +147,8 @@
     amneziawg-tools
     curl
     distrobox
-    
+    kitty
+    yazi
     micro
     ncdu
     neovim
