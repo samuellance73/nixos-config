@@ -169,6 +169,7 @@
     vscode-fhs
     vim
     wget
+
     waybar
     dunst
     libnotify
