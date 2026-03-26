@@ -35,7 +35,7 @@
     ".local/share/distrobox"
     ".local/share/keyrings"
     ".ssh"
-
+    ".config/hypr"
     "Safe"
     ".var/app/app.zen_browser.zen"
     ];

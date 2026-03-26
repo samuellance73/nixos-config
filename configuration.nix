@@ -49,7 +49,6 @@
       "/var/lib/bluetooth"
       "/var/lib/flatpak"
       "/var/lib/containers"
-      "~/.config/hypr/"
     ];
     files = [
       "/etc/machine-id"
@@ -170,6 +169,13 @@
     vscode-fhs
     vim
     wget
+    waybar
+    dunst
+    libnotify
+    rofi-wayland
+    wl-clipboard
+    pavucontrol
+    
   ];
 
   # ==========================================
