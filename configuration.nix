@@ -190,6 +190,7 @@
     networkmanagerapplet
     brightnessctl
     hyprlock
+    hyprsunset
     
     
   ];
