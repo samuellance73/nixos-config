@@ -11,6 +11,11 @@
     };
     tmp.cleanOnBoot = true;
   };
+#Fonts
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+   # nerd-fonts.symbols-only
+  ];
 
   # ==========================================
   # HARDWARE & OPTIMIZATIONS
@@ -173,9 +178,11 @@
     waybar
     dunst
     libnotify
-    rofi-wayland
+    rofi
     wl-clipboard
     pavucontrol
+    networkmanagerapplet
+    kdePackages.dolphin
     
   ];
 
