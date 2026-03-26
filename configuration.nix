@@ -98,6 +98,7 @@
   # ==========================================
   # DESKTOP ENVIRONMENT (GNOME)
   # ==========================================
+  
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
@@ -117,6 +118,7 @@
     jack.enable = true;
   };
   services.gnome.gnome-keyring.enable = true;
+  security.polkit.enable = true;
 
   # ==========================================
   # USERS & AUTHENTICATION
@@ -177,7 +179,8 @@
     vscode-fhs
     vim
     wget
-
+    
+    hyprpolkitagent
     waybar
     dunst
     libnotify
@@ -185,6 +188,7 @@
     wl-clipboard
     pavucontrol
     networkmanagerapplet
+    brightnessctl
     
     
   ];
