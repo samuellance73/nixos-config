@@ -95,11 +95,12 @@
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  #stylix
 
   stylix = {
     enable = true;
-    image = ./wallpapers/Kath.png;
+    image = ./wallpapers/wp61.jpg;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+    polarity = "dark";
   };
 
   # ==========================================
@@ -187,6 +188,7 @@
     vscode-fhs
     vim
     wget
+    hyprpaper
     
     hyprpolkitagent
     waybar

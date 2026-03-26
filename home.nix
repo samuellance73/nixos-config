@@ -12,7 +12,7 @@
   programs.home-manager.enable = true;
 
 
-     
+  xdg.configFile."Kvantum/kvantum.kvconfig".enable = false;
        
   # Match this to your system.stateVersion in configuration.nix
   home.persistence."/persist" = {
