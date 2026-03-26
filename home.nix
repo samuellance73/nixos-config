@@ -7,24 +7,10 @@
   # Add your user-specific packages here
   home.packages = with pkgs; [
     htop
-    gnomeExtensions.clipboard-indicator
-    gnomeExtensions.gnome-bedtime
+
   ];
   programs.home-manager.enable = true;
-   dconf.settings = {
-    "org/gnome/desktop/input-sources" = {
-      xkb-options = [ "caps:swapescape" ];
-    };
 
-    # 2. Set Purple Accent Color (GNOME 47+)
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark"; # Recommended for purple theme
-      accent-color = "purple";
-    };
-
-
- };
-   
 
      
        
@@ -39,6 +25,7 @@
     ".config/waybar" 
     "Safe"
     ".var/app/app.zen_browser.zen"
+    ".nixos-config"
     ];
   };
     

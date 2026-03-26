@@ -95,6 +95,13 @@
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
 
+  #stylix
+
+  stylix = {
+    enable = true;
+    image = ./wallpapers/Kath.png;
+  };
+
   # ==========================================
   # DESKTOP ENVIRONMENT (GNOME)
   # ==========================================
@@ -104,6 +111,7 @@
     displayManager.gdm.enable = true;
     # desktopManager.gnome.enable = true;
   };
+
   services.blueman.enable = true;
   programs.hyprland = {
     enable = true;
