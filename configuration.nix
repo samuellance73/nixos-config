@@ -189,6 +189,7 @@
     pavucontrol
     networkmanagerapplet
     brightnessctl
+    hyprlock
     
     
   ];
