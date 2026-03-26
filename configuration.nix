@@ -49,6 +49,7 @@
       "/var/lib/bluetooth"
       "/var/lib/flatpak"
       "/var/lib/containers"
+      "~/.config/hypr/"
     ];
     files = [
       "/etc/machine-id"
@@ -93,7 +94,20 @@
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
+    # desktopManager.gnome.enable = true;
+  };
+
+  programs.hyprland = {
+    enable = true;
+    # xwayland.enable = true; # Enabled by default, useful for older apps
+  };
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
   };
   services.gnome.gnome-keyring.enable = true;
 
@@ -136,7 +150,6 @@
     # GSConnect (KDE Connect implementation for GNOME)
     kdeconnect = {
       enable = true;
-      package = pkgs.gnomeExtensions.gsconnect;
     };
   };
 
