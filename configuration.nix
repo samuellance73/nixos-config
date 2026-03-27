@@ -98,7 +98,7 @@
 
   stylix = {
     enable = true;
-
+    image = ./wallpapers/city-horizon.jpg;
     polarity = "dark";
     # This is the "Mocha" flavor
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
@@ -185,7 +185,6 @@
   programs = {
     nh.enable = true;
     
-    git.enable = true;
     nix-ld.enable = true;
 
     # GSConnect (KDE Connect implementation for GNOME)
@@ -202,7 +201,7 @@
     curl
     distrobox
     
-    yazi
+    
     micro
     ncdu
     neovim
@@ -211,7 +210,7 @@
     vscode-fhs
     vim
     wget
-    hyprpaper
+    
     
     hyprpolkitagent
     
@@ -221,7 +220,7 @@
     pavucontrol
     
     
-    hyprlock
+    
     hyprsunset
     
     

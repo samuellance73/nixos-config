@@ -23,6 +23,7 @@
     nerd-fonts.jetbrains-mono
      
   ];
+    services.hyprpaper.enable = true; 
   services.dunst = {
   enable = true;
   };
