@@ -111,14 +111,20 @@
   };
     
 
-    fonts = {
-      monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
-        name = "JetBrainsMono Nerd Font Mono";
-      };
-    };
+
   
   };
+
+    # This sets up the background "magic" for Thunar
+  programs.thunar.enable = true;
+  programs.thunar.plugins = with pkgs.xfce; [
+    thunar-archive-plugin
+    thunar-volman
+  ];
+
+  # These two lines are MANDATORY for Trash and USBs to work
+  services.gvfs.enable = true;    # Trash/Network mounts
+  services.tumbler.enable = true; # Image thumbnails
 
   # ==========================================
   # DESKTOP ENVIRONMENT (GNOME)
@@ -157,7 +163,7 @@
     trueking = {
       isNormalUser = true;
       description = "trueking";
-      extraGroups =[ "networkmanager" "wheel" ];
+      extraGroups =[ "networkmanager" "wheel" "input" "video" ];
       hashedPassword = "$y$j9T$FT36B0y7klaP4SEG3eAmL/$Q5BUfiiwJgJbQ.3S6nZCXBnPJVXSZw4VbT.lIqEFFg9";
     };
   };
@@ -213,8 +219,8 @@
     
     wl-clipboard
     pavucontrol
-    networkmanagerapplet
-    brightnessctl
+    
+    
     hyprlock
     hyprsunset
     
