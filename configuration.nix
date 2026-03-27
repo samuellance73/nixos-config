@@ -1,9 +1,6 @@
 { config, pkgs, inputs, ... }:
 
 {
-  # ==========================================
-  # BOOTLOADER & KERNEL
-  # ==========================================
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -11,15 +8,10 @@
     };
     tmp.cleanOnBoot = true;
   };
-#Fonts
+
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
-   # nerd-fonts.symbols-only
   ];
-
-  # ==========================================
-  # HARDWARE & OPTIMIZATIONS
-  # ==========================================
   hardware.graphics.enable = true;
   zramSwap.enable = true;
 
@@ -28,10 +20,6 @@
   hardware.bluetooth = {
      enable = true;
   };
-
-  # ==========================================
-  # FILE SYSTEMS & STORAGE
-  # ==========================================
   services.btrfs.autoScrub = {
     enable = true;
     interval = "monthly";
@@ -42,10 +30,6 @@
     "/var/log".neededForBoot = true;
   };
 
-  # ==========================================
-  # IMPERMANENCE
-  # ==========================================
-  # Note: Requires the impermanence NixOS module to be imported in your flake.
   programs.fuse.userAllowOther = true;
 
   environment.persistence."/persist" = {
@@ -63,14 +47,10 @@
     ];
   };
 
-  # ==========================================
-  # NETWORKING
-  # ==========================================
   networking = {
     hostName = "latitude";
     networkmanager.enable = true;
 
-    # Block distracting websites
     hosts = {
       "0.0.0.0" =[
         "www.arras.io"
@@ -89,9 +69,7 @@
     };
   };
 
-  # ==========================================
-  # TIMEZONE & LOCALE
-  # ==========================================
+
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -100,10 +78,8 @@
     enable = true;
     image = ./wallpapers/city-horizon.jpg;
     polarity = "dark";
-    # This is the "Mocha" flavor
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     
-  # Use the "Teal" accent (very popular right now)
   cursor = {
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Ice";
@@ -115,32 +91,25 @@
   
   };
 
-    # This sets up the background "magic" for Thunar
   programs.thunar.enable = true;
   programs.thunar.plugins = with pkgs.xfce; [
     thunar-archive-plugin
     thunar-volman
   ];
 
-  # These two lines are MANDATORY for Trash and USBs to work
-  services.gvfs.enable = true;    # Trash/Network mounts
-  services.tumbler.enable = true; # Image thumbnails
-
-  # ==========================================
-  # DESKTOP ENVIRONMENT (GNOME)
-  # ==========================================
+  services.gvfs.enable = true;
+  services.tumbler.enable = true;
   
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
-    # desktopManager.gnome.enable = true;
   };
 
   services.blueman.enable = true;
   programs.hyprland = {
     enable = true;
-    # xwayland.enable = true; # Enabled by default, useful for older apps
   };
+
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -152,9 +121,6 @@
   services.gnome.gnome-keyring.enable = true;
   security.polkit.enable = true;
 
-  # ==========================================
-  # USERS & AUTHENTICATION
-  # ==========================================
   users.users = {
     root = {
       hashedPassword = "$y$j9T$FT36B0y7klaP4SEG3eAmL/$Q5BUfiiwJgJbQ.3S6nZCXBnPJVXSZw4VbT.lIqEFFg9";
@@ -168,68 +134,33 @@
     };
   };
 
-  # ==========================================
-  # VIRTUALISATION
-  # ==========================================
   virtualisation.podman = {
     enable = true;
-    dockerCompat = true; # Create a `docker` alias for podman
-    defaultNetwork.settings.dns_enabled = true; # Required for podman-compose
+    dockerCompat = true;
+    defaultNetwork.settings.dns_enabled = true;
   };
 
-  # ==========================================
-  # PROGRAMS & SERVICES
-  # ==========================================
   services.flatpak.enable = true;
 
   programs = {
     nh.enable = true;
-    
+    git.enable = true;
     nix-ld.enable = true;
 
-    # GSConnect (KDE Connect implementation for GNOME)
     kdeconnect = {
       enable = true;
     };
   };
 
-  # ==========================================
-  # SYSTEM PACKAGES
-  # ==========================================
+
   environment.systemPackages = with pkgs;[
-    amneziawg-tools
     curl
     distrobox
-    
-    
-    micro
-    ncdu
-    neovim
-    protonvpn-gui
     steam-run
-    vscode-fhs
     vim
     wget
-    
-    
-    hyprpolkitagent
-    
-    
-    
-    wl-clipboard
-    pavucontrol
-    
-    
-    
-    hyprsunset
-    
-    
   ];
 
-  # ==========================================
-  # HOME MANAGER
-  # ==========================================
-  # Note: Requires home-manager NixOS module to be imported in your flake.
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
@@ -237,9 +168,6 @@
     users.trueking = import ./home.nix;
   };
 
-  # ==========================================
-  # NIX SETTINGS
-  # ==========================================
   nixpkgs.config.allowUnfree = true;
 
   nix = {
@@ -251,8 +179,5 @@
     };
   };
 
-  # ==========================================
-  # STATE VERSION
-  # ==========================================
   system.stateVersion = "25.11";
 }

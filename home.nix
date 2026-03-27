@@ -7,6 +7,8 @@
   # Add your user-specific packages here
   home.packages = with pkgs; [
     htop
+    grim
+    slurp
     kitty
     libnotify
     hyprpolkitagent
@@ -16,14 +18,21 @@
     brightnessctl
     networkmanagerapplet
     fzf
-    
-    jq                # Essential for Mechabar's JSON scripts
-    playerctl         # For the music player module
+    micro
+    ncdu
+    protonvpn-gui
+    vscode-fhs
+    hyprpolkitagent
+    wl-clipboard
+    pavucontrol
+    hyprsunset
+    jq               
     nerd-fonts.symbols-only
     nerd-fonts.jetbrains-mono
      
   ];
-    services.hyprpaper.enable = true; 
+  
+  services.hyprpaper.enable = true; 
   services.dunst = {
   enable = true;
   };
@@ -33,9 +42,8 @@
   programs.rofi.enable = true;
   programs.home-manager.enable = true;
   
-  xdg.configFile."waybar".source = config.lib.file.mkOutOfStoreSymlink "/persist/etc/nixos/dotfiles/waybar";
+  xdg.configFile."waybar".source = config.lib.file.mkOutOfStoreSymlink "/persist/etc/nixos/dotfiles/waybar/mech";
   xdg.configFile."hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink "/persist/etc/nixos/dotfiles/hypr/hyprland.conf";
-
   xdg.configFile."Kvantum/kvantum.kvconfig".enable = false;
        
   # Match this to your system.stateVersion in configuration.nix
