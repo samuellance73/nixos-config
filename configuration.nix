@@ -191,7 +191,6 @@
     hyprpaper
     
     hyprpolkitagent
-    waybar
     dunst
     libnotify
     rofi
