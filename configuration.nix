@@ -98,9 +98,26 @@
 
   stylix = {
     enable = true;
-    image = ./wallpapers/wp61.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+
     polarity = "dark";
+    # This is the "Mocha" flavor
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    
+  # Use the "Teal" accent (very popular right now)
+  cursor = {
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Ice";
+    size = 24;
+  };
+    
+
+    fonts = {
+      monospace = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font Mono";
+      };
+    };
+  
   };
 
   # ==========================================
@@ -178,7 +195,7 @@
     amneziawg-tools
     curl
     distrobox
-    kitty
+    
     yazi
     micro
     ncdu
@@ -191,9 +208,9 @@
     hyprpaper
     
     hyprpolkitagent
-    dunst
-    libnotify
-    rofi
+    
+    
+    
     wl-clipboard
     pavucontrol
     networkmanagerapplet
