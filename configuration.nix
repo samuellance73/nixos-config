@@ -108,6 +108,7 @@
   services.blueman.enable = true;
   programs.hyprland = {
     enable = true;
+    withUWSM = true;
   };
 
   security.rtkit.enable = true;

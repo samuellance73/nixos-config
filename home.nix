@@ -26,10 +26,12 @@
     wl-clipboard
     pavucontrol
     hyprsunset
-    jq               
+    jq
+    neovim               
     nerd-fonts.symbols-only
     nerd-fonts.jetbrains-mono
-     
+    zoxide 
+    wl-clipboard
   ];
   
   services.hyprpaper.enable = true; 
