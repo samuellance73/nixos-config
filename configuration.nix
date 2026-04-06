@@ -173,6 +173,9 @@
     unzip
     btop
     p7zip
+    eza
+    
+
 ];
 
   home-manager = {
@@ -189,9 +192,12 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 14d";
+      options = "--delete-older-than 7d";
     };
   };
+
+# Optimise storage by hard-linking duplicate files
+nix.settings.auto-optimise-store = true;
 
   system.stateVersion = "25.11";
 }

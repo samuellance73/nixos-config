@@ -33,10 +33,8 @@
     zoxide 
     wl-clipboard
     nixd
+    floorp-bin
   ];
-  programs.librewolf= {
-    enable = true;
-  };
   services.cliphist.enable = true;
   services.hyprpaper.enable = true; 
   services.dunst = {
