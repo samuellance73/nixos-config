@@ -32,8 +32,12 @@
     nerd-fonts.jetbrains-mono
     zoxide 
     wl-clipboard
+    nixd
   ];
-  
+  programs.librewolf= {
+    enable = true;
+  };
+  services.cliphist.enable = true;
   services.hyprpaper.enable = true; 
   services.dunst = {
   enable = true;

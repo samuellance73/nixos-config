@@ -16,7 +16,6 @@
   zramSwap.enable = true;
 
   services.fwupd.enable = true;
-  services.power-profiles-daemon.enable = true;
   hardware.bluetooth = {
      enable = true;
   };
@@ -31,7 +30,9 @@
   };
 
   programs.fuse.userAllowOther = true;
-
+  services.tlp = {
+    enable = true;
+  };
   environment.persistence."/persist" = {
     hideMounts = true;
     directories =[
@@ -102,7 +103,7 @@
   
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = true;
+    displayManager.sddm.enable = true;
   };
 
   services.blueman.enable = true;
@@ -111,6 +112,14 @@
     withUWSM = true;
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-gtk # Required for file picking and as a fallback
+    ];
+    config.common.default = "*"; # Essential for newer portal versions
+  };
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -160,7 +169,11 @@
     steam-run
     vim
     wget
-  ];
+    zip
+    unzip
+    btop
+    p7zip
+];
 
   home-manager = {
     useGlobalPkgs = true;
