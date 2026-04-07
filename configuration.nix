@@ -151,7 +151,20 @@
   };
 
   services.flatpak.enable = true;
+ services.zapret = {
+    enable = true;
+    # The aggressive strategy found in your specific log
+    params =[
+      "--dpi-desync=fake"
+      "--dpi-desync-ttl=3"
+      "--dpi-desync-fake-tls=0x00000000"
+      "--dpi-desync-fake-tls=!"
+      "--dpi-desync-fake-tls-mod=rnd,rndsni,dupsid"
+    ];
 
+    udpSupport = true;
+    udpPorts = [ "50000:65535" ]; 
+  }; 
   programs = {
     nh.enable = true;
     git.enable = true;
