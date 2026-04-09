@@ -37,10 +37,12 @@
   ];
   services.cliphist.enable = true;
   services.hyprpaper.enable = true; 
-  services.dunst = {
+ services.swaync = {
   enable = true;
-  };
-  programs.yazi = {
+  # settings = { ... }; # Optional: JSON config here
+  # style = '' ... '';  # Optional: CSS styling here
+};
+ programs.yazi = {
   enable = true;
   };
   programs.rofi.enable = true;
