@@ -13,8 +13,7 @@
     nerd-fonts.jetbrains-mono
   ];
   hardware.graphics.enable = true;
-  boot.kernelPackages = pkgs.linuxPackages_zen;
-  services.auto-cpufreq.enable = true;
+
   zramSwap.enable = true;
   services.thermald.enable = true;
   services.fwupd.enable = true;
@@ -68,6 +67,8 @@
         "buildroyale.io"
         "wyoutube.com"
         "www.wyoutube.com"
+	"www.shellshock.io"
+	"shellshock.io"
       ];
     };
   };
@@ -75,7 +76,7 @@
 
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
-
+  services.tailscale.enable = true;
 
   stylix = {
     enable = true;
@@ -156,17 +157,33 @@
  services.zapret = {
     enable = true;
     # The aggressive strategy found in your specific log
-    params =[
-      "--dpi-desync=fake"
-      "--dpi-desync-ttl=3"
-      "--dpi-desync-fake-tls=0x00000000"
-      "--dpi-desync-fake-tls=!"
-      "--dpi-desync-fake-tls-mod=rnd,rndsni,dupsid"
-    ];
+    
+     params =[
+"--dpi-desync=fake"
+"--dpi-desync-ttl=3"
+"--dpi-desync-fake-tls=0x00000000"
+"--dpi-desync-fake-tls=!"
+"--dpi-desync-fake-tls-mod=rnd,rndsni,dupsid"
+];
+  
+
 
     udpSupport = true;
     udpPorts = [ "50000:65535" ]; 
-  }; 
+  };
+
+
+
+    networking.nameservers = [ 
+    "1.1.1.1#cloudflare-dns.com" 
+    "1.0.0.1#cloudflare-dns.com" 
+    "8.8.8.8#dns.google" 
+    "8.8.4.4#dns.google" 
+  ];
+    services.resolved = {
+    enable = true;
+ #   dnsovertls = "true";
+    };
   programs = {
     nh.enable = true;
     git.enable = true;

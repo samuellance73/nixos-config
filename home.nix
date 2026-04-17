@@ -6,6 +6,7 @@
 
   # Add your user-specific packages here
   home.packages = with pkgs; [
+    mosh
     htop
     grim
     slurp
@@ -33,8 +34,12 @@
     zoxide 
     wl-clipboard
     nixd
-    floorp-bin
+    epiphany
+    bat
+    ripgrep
+    antigravity-fhs
   ];
+  programs.librewolf.enable=true;
   services.cliphist.enable = true;
   services.hyprpaper.enable = true; 
  services.swaync = {
