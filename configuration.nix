@@ -96,7 +96,7 @@
   };
 
   programs.thunar.enable = true;
-  programs.thunar.plugins = with pkgs.xfce; [
+  programs.thunar.plugins = with pkgs; [
     thunar-archive-plugin
     thunar-volman
   ];
@@ -104,9 +104,9 @@
   services.gvfs.enable = true;
   services.tumbler.enable = true;
   
+  services.displayManager.sddm.enable = true;
   services.xserver = {
     enable = true;
-    displayManager.sddm.enable = true;
   };
 
   services.blueman.enable = true;

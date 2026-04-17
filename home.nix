@@ -21,7 +21,7 @@
     fzf
     micro
     ncdu
-    protonvpn-gui
+    proton-vpn
     vscode-fhs
     hyprpolkitagent
     wl-clipboard
@@ -47,15 +47,20 @@
   # settings = { ... }; # Optional: JSON config here
   # style = '' ... '';  # Optional: CSS styling here
 };
+
+
  programs.yazi = {
   enable = true;
   };
+
+  
   programs.rofi.enable = true;
   programs.home-manager.enable = true;
   
   xdg.configFile."waybar".source = config.lib.file.mkOutOfStoreSymlink "/persist/etc/nixos/dotfiles/waybar/mech";
   xdg.configFile."hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink "/persist/etc/nixos/dotfiles/hypr/hyprland.conf";
   xdg.configFile."Kvantum/kvantum.kvconfig".enable = false;
+
        
   # Match this to your system.stateVersion in configuration.nix
   home.persistence."/persist" = {
@@ -74,8 +79,12 @@
   
     programs.git = {
     enable = true;
-    userName = "TrueKing"; # Change to your name
-    userEmail = "samuellance73@gmail.com"; # Change to your email
+    settings = {
+      user = {
+        name = "TrueKing";
+        email = "samuellance73@gmail.com";
+      };
+    };
     };
   home.stateVersion = "25.11";
 
