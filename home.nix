@@ -22,7 +22,7 @@
     micro
     ncdu
     proton-vpn
-    vscode-fhs
+    vscodium-fhs
     hyprpolkitagent
     wl-clipboard
     pavucontrol
@@ -38,6 +38,8 @@
     bat
     ripgrep
     antigravity-fhs
+    ffmpeg
+    zed-editor-fhs
   ];
   programs.librewolf.enable=true;
   services.cliphist.enable = true;
@@ -71,7 +73,6 @@
     ".ssh"
     "Safe"
     ".var/app/app.zen_browser.zen"
-    ".nixos-config"
     ];
   };
     
