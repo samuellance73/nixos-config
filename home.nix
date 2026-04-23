@@ -6,7 +6,7 @@
 
   # Add your user-specific packages here
   home.packages = with pkgs; [
-    mosh
+    
     htop
     grim
     slurp
@@ -23,8 +23,7 @@
     ncdu
     proton-vpn
     vscodium-fhs
-    hyprpolkitagent
-    wl-clipboard
+    
     pavucontrol
     hyprsunset
     jq

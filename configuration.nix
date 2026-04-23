@@ -152,7 +152,7 @@
     dockerCompat = true;
     defaultNetwork.settings.dns_enabled = true;
   };
-
+programs.mosh.enable = true;
   services.flatpak.enable = true;
  services.zapret = {
     enable = true;
