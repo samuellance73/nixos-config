@@ -40,10 +40,10 @@
     ffmpeg
     zed-editor-fhs
   ];
-  programs.firefox={
-    enable = true;
+
+  programs.librewolf={
+    enable=true;
   };
-  programs.librewolf.enable=true;
   services.cliphist.enable = true;
   services.hyprpaper.enable = true; 
  services.swaync = {
