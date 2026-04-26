@@ -67,8 +67,8 @@
         "buildroyale.io"
         "wyoutube.com"
         "www.wyoutube.com"
-	"www.shellshock.io"
-	"shellshock.io"
+	      "www.shellshock.io"
+	      "shellshock.io"
       ];
     };
   };
@@ -88,9 +88,7 @@
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Ice";
     size = 24;
-  };
-    
-
+  }; 
 
   
   };
@@ -166,13 +164,7 @@ programs.mosh.enable = true;
 "--dpi-desync-fake-tls-mod=rnd,rndsni,dupsid"
 ];
   
-
-
-    udpSupport = true;
-    udpPorts = [ "50000:65535" ]; 
   };
-
-
 
     networking.nameservers = [
     "1.1.1.1"

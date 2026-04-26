@@ -1,0 +1,3 @@
+[1m<<<[0m /run/current-system
+[1m>>>[0m /nix/store/rbvm4lky7fz955269g2fq3p2svk6zvs9-nixos-system-latitude-26.05.20260422.0726a0e
+
