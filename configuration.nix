@@ -197,6 +197,7 @@ programs.mosh.enable = true;
     btop
     p7zip
     eza
+    tmux
     
 
 ];

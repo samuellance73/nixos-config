@@ -22,7 +22,7 @@
     micro
     ncdu
     proton-vpn
-    vscodium-fhs
+    vscode-fhs
     
     pavucontrol
     hyprsunset
@@ -39,8 +39,9 @@
     antigravity-fhs
     ffmpeg
     zed-editor-fhs
+    github-cli
   ];
-
+  services.playerctld.enable = true;
   programs.librewolf={
     enable=true;
   };
