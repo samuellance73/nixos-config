@@ -157,18 +157,11 @@ programs.mosh.enable = true;
     # The aggressive strategy found in your specific log
     
      params =[
-
-    # 1. The Hybrid Strategy: Does both 'fake' and 'multisplit'
-    "--dpi-desync=fake,multisplit"
-    
-    # 2. The Universal Split: Position 2 is the most compatible for both
-    "--dpi-desync-split-pos=2"
-    
-    # 3. The Distance Finder: This is what makes it work on ANY network
-    "--dpi-desync-autottl=-1"
-    
-    # 4. The Fooling: 'badseq' is safe for almost all home and school routers
-    "--dpi-desync-fooling=badseq"
+      "--dpi-desync=fake"
+"--dpi-desync-ttl=3"
+"--dpi-desync-fake-tls=0x00000000"
+"--dpi-desync-fake-tls=!"
+"--dpi-desync-fake-tls-mod=rnd,rndsni,dupsid"
 ];
   
   };
