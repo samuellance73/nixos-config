@@ -42,9 +42,40 @@
     github-cli
   ];
   services.playerctld.enable = true;
+
+
   programs.librewolf={
     enable=true;
+
+    policies = {
+
+    };
+
+    profiles.default = {
+     extensions.packages = with pkgs.nur.repos.rycee.firefox-addons;[
+        vimium-c
+        bitwarden
+        darkreader
+      ];
+
+    settings = {
+
+      
+      "privacy.resistFingerprinting" = false;
+
+      "privacy.fingerprintingProtection" = true;
+
+      "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme";
+
+      "layout.css.prefers-color-scheme.content-override" = 0;
+      
+      
+      };
+
+    };
   };
+
+
   services.cliphist.enable = true;
   services.hyprpaper.enable = true; 
  services.swaync = {

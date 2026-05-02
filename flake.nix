@@ -20,6 +20,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur.url = "github:nix-community/NUR"; 
   };
 
   # --- ADDED home-manager TO OUTPUTS ---
@@ -29,10 +30,13 @@
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules =[
+        ({ config, pkgs, ... }: {
+          nixpkgs.overlays = [ inputs.nur.overlays.default ];
+        })
+
         disko.nixosModules.disko
         impermanence.nixosModules.impermanence
         
-        # --- ADDED HOME MANAGER MODULE ---
         home-manager.nixosModules.home-manager
         stylix.nixosModules.stylix
         ./disko.nix

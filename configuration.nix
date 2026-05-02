@@ -112,7 +112,7 @@
     enable = true;
     withUWSM = true;
   };
-
+  programs.zsh.enable = true;
   xdg.portal = {
     enable = true;
     extraPortals = [
