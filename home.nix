@@ -41,9 +41,11 @@
     zed-editor-fhs
     github-cli
   ];
+
   services.playerctld.enable = true;
 
-
+  home.file.".config/librewolf/librewolf.overrides.cfg".source = 
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.librewolf/librewolf.overrides.cfg";
   programs.librewolf={
     enable=true;
 
@@ -52,6 +54,12 @@
     };
 
     profiles.default = {
+            id = 0;
+      name = "default";
+      isDefault = true;
+
+
+
      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons;[
         vimium-c
         bitwarden
