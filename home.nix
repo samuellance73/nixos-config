@@ -56,6 +56,7 @@
         vimium-c
         bitwarden
         darkreader
+        temporary-containers
       ];
 
     settings = {
