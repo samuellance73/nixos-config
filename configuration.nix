@@ -154,27 +154,56 @@ programs.mosh.enable = true;
   services.flatpak.enable = true;
  services.zapret = {
     enable = true;
-    # The aggressive strategy found in your specific log
     
      params =[
+      /*
       "--dpi-desync=fake"
 "--dpi-desync-ttl=3"
 "--dpi-desync-fake-tls=0x00000000"
 "--dpi-desync-fake-tls=!"
 "--dpi-desync-fake-tls-mod=rnd,rndsni,dupsid"
+*/
+
+      "--dpi-desync=split2"           
+      "--dpi-desync-split-pos=midsld" 
+      "--dpi-desync-fooling=md5sig"
+      "--hostcase"     
+
 ];
   
   };
-
+/*
     networking.nameservers = [
     "1.1.1.1"
 
    "8.8.8.8#dns.google" 
     "8.8.4.4#dns.google" 
-    ];
+    ];*/
+
+
+networking.nameservers =[ "127.0.0.1"];
+networking.networkmanager.dns = "none";
+
+  # 3. Enable and configure the DNS over HTTPS proxy
+  services.dnscrypt-proxy2 = {
+    enable = true;
+    settings = {
+      # Require DNS requests to be encrypted and verified
+      require_dnssec = true;
+      require_nolog = true; # Only use servers that don't log your history
+      
+      server_names =[ "cloudflare" "google" ];
+      
+
+    };
+  };
+  
+
+
+/*
     services.resolved = {
     enable = true;
-    };
+    };*/
   programs = {
     nh.enable = true;
     git.enable = true;

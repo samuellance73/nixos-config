@@ -1,136 +1,122 @@
-{ config, pkgs,lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
+let
+  ffultima-src = builtins.fetchTarball {
+    url = "https://github.com/soulhotel/FF-ULTIMA/archive/refs/tags/v4.3.tar.gz";
+    sha256 = "0cpwxr70xfd43pf08jqsm8jbni71gjg393qczcmd35ccwnpj3kfa";
+  };
+in
 {
   home.username = "trueking";
   home.homeDirectory = "/home/trueking";
 
-  # Add your user-specific packages here
   home.packages = with pkgs; [
-    
-    htop
-    grim
-    slurp
-    kitty
-    libnotify
-    hyprpolkitagent
-    hyprlock
-    waybar
-    bluez
-    brightnessctl
-    networkmanagerapplet
-    fzf
-    micro
-    ncdu
-    proton-vpn
-    vscode-fhs
-    
-    pavucontrol
-    hyprsunset
-    jq
-    neovim               
-    nerd-fonts.symbols-only
-    nerd-fonts.jetbrains-mono
-    zoxide 
-    wl-clipboard
-    nixd
-    epiphany
-    bat
-    ripgrep
-    antigravity-fhs
-    ffmpeg
-    zed-editor-fhs
-    github-cli
+    htop grim slurp kitty libnotify hyprpolkitagent hyprlock
+    waybar bluez brightnessctl networkmanagerapplet fzf micro
+    ncdu proton-vpn vscode-fhs gnome-clocks pavucontrol
+    hyprsunset jq neovim nerd-fonts.symbols-only
+    nerd-fonts.jetbrains-mono zoxide wl-clipboard nixd
+    epiphany bat ripgrep antigravity-fhs ffmpeg
+    zed-editor-fhs github-cli
   ];
 
   services.playerctld.enable = true;
 
-  home.file.".config/librewolf/librewolf.overrides.cfg".source = 
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.librewolf/librewolf.overrides.cfg";
-  programs.librewolf={
-    enable=true;
-
-    policies = {
-
-    };
-
+  programs.librewolf = {
+    enable = true;
     profiles.default = {
-            id = 0;
+
+      id = 0;
       name = "default";
       isDefault = true;
 
 
 
-     extensions.packages = with pkgs.nur.repos.rycee.firefox-addons;[
+      settings = {
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        "layers.acceleration.force-enabled" = true;
+        "svg.context-properties.content.enabled" = true;
+        "privacy.resistFingerprinting" = false;
+        "privacy.fingerprintingProtection" = true;
+        "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme";
+        "layout.css.prefers-color-scheme.content-override" = 0;
+        "sidebar.revamp" = true;
+        "sidebar.verticalTabs" = true;
+        "user.theme.catppuccin-mocha" = true;
+      #  "ultima.sidebar.autohide" = true;
+      #  "ultima.navbar.autohide" = true;
+      };
+
+
+
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         vimium-c
         bitwarden
         darkreader
         temporary-containers
+        violentmonkey
+        buster-captcha-solver
+        bypass-paywalls-clean
+        sponsorblock
+        dearrow
+        multi-account-containers
       ];
+    };
 
-    settings = {
-
-      
-      "privacy.resistFingerprinting" = false;
-
-      "privacy.fingerprintingProtection" = true;
-
-      "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme";
-
-      "layout.css.prefers-color-scheme.content-override" = 0;
-      
-      
+    profiles.real = {
+      id = 1;
+      name = "real";
+      settings = {
+        "privacy.resistFingerprinting" = false;
+        "privacy.fingerprintingProtection" = true;
+        "privacy.fingerprintingProtection.overrides" = "+AllTargets,-CSSPrefersColorScheme";
+        "layout.css.prefers-color-scheme.content-override" = 0;
       };
-
     };
   };
 
-
+  # 4. Link the theme files (using the correct variable name)
+  home.file.".librewolf/default/chrome".source = ffultima-src;
   services.cliphist.enable = true;
-  services.hyprpaper.enable = true; 
- services.swaync = {
-  enable = true;
-  # settings = { ... }; # Optional: JSON config here
-  # style = '' ... '';  # Optional: CSS styling here
-};
+  services.hyprpaper.enable = true;
 
-
- programs.yazi = {
-  enable = true;
+  services.swaync = {
+    enable = true;
   };
 
-  
+  programs.yazi = {
+    enable = true;
+  };
+
   programs.rofi.enable = true;
   programs.home-manager.enable = true;
-  
+
   xdg.configFile."waybar".source = config.lib.file.mkOutOfStoreSymlink "/persist/etc/nixos/dotfiles/waybar/mech";
   xdg.configFile."hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink "/persist/etc/nixos/dotfiles/hypr/hyprland.conf";
   xdg.configFile."Kvantum/kvantum.kvconfig".enable = false;
 
-       
-  # Match this to your system.stateVersion in configuration.nix
   home.persistence."/persist" = {
     directories = [
-    ".local/share/containers"
-    ".local/share/distrobox"
-    ".local/share/keyrings"
-    ".ssh"
-    "Safe"
-    ".var/app/app.zen_browser.zen"
+      ".local/share/containers"
+      ".local/share/distrobox"
+      ".local/share/keyrings"
+      ".ssh"
+      "Safe"
+      ".var/app/app.zen_browser.zen"
     ];
   };
-    
- 
-  
-    programs.git = {
-    enable = true;
-    settings = {
-      user = {
-        name = "TrueKing";
-        email = "samuellance73@gmail.com";
-      };
-    };
-    };
-  home.stateVersion = "25.11";
 
-     
+  programs.git = {
+    enable = true;
+    userName = "TrueKing";
+    userEmail = "samuellance73@gmail.com";
+  }; # Fixed missing braces here
+
+  home.stateVersion = "24.11"; # Fixed version number
 }
