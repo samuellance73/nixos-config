@@ -112,7 +112,7 @@
     enable = true;
     withUWSM = true;
   };
-  programs.zsh.enable = true;
+  programs.fish.enable = true;
   xdg.portal = {
     enable = true;
     extraPortals = [
@@ -127,6 +127,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+
     jack.enable = true;
   };
   services.gnome.gnome-keyring.enable = true;
@@ -140,6 +141,7 @@
     trueking = {
       isNormalUser = true;
       description = "trueking";
+      shell = pkgs.fish; 
       extraGroups =[ "networkmanager" "wheel" "input" "video" ];
       hashedPassword = "$y$j9T$FT36B0y7klaP4SEG3eAmL/$Q5BUfiiwJgJbQ.3S6nZCXBnPJVXSZw4VbT.lIqEFFg9";
     };
@@ -221,13 +223,15 @@ networking.networkmanager.dns = "none";
     steam-run
     vim
     wget
-    zip
-    unzip
+
     btop
-    p7zip
     eza
     tmux
-    
+    file-roller # The GUI archive manager
+    p7zip       # Support for .7z
+    unzip       # Support for .zip
+    zip
+    rar         # Support for .rar
 
 ];
 

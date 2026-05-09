@@ -18,13 +18,30 @@ in
 
   home.packages = with pkgs; [
     htop grim slurp kitty libnotify hyprpolkitagent hyprlock
-    waybar bluez brightnessctl networkmanagerapplet fzf micro
+    waybar bluez brightnessctl networkmanagerapplet micro
     ncdu proton-vpn vscode-fhs gnome-clocks pavucontrol
     hyprsunset jq neovim nerd-fonts.symbols-only
-    nerd-fonts.jetbrains-mono zoxide wl-clipboard nixd
+    nerd-fonts.jetbrains-mono wl-clipboard nixd
     epiphany bat ripgrep antigravity-fhs ffmpeg
     zed-editor-fhs github-cli
   ];
+  programs.mpv = {
+  enable = true;
+  };
+  programs.yt-dlp = {
+  enable = true;
+  };
+  programs.fzf = {
+  enable = true;
+  };
+programs.fish = {
+  enable = true;
+};
+programs.zoxide = {
+  enable = true;
+  enableBashIntegration = true;
+    enableFishIntegration = true;
+};
 
   services.playerctld.enable = true;
 
@@ -66,12 +83,28 @@ in
         sponsorblock
         dearrow
         multi-account-containers
+        sidebery
       ];
     };
 
     profiles.real = {
       id = 1;
       name = "real";
+
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+        vimium-c
+        bitwarden
+        darkreader
+        temporary-containers
+        violentmonkey
+        buster-captcha-solver
+        bypass-paywalls-clean
+        sponsorblock
+        dearrow
+        multi-account-containers
+        sidebery
+      ];
+
       settings = {
         "privacy.resistFingerprinting" = false;
         "privacy.fingerprintingProtection" = true;
@@ -106,6 +139,7 @@ in
       ".local/share/containers"
       ".local/share/distrobox"
       ".local/share/keyrings"
+      ".librewolf/real"
       ".ssh"
       "Safe"
       ".var/app/app.zen_browser.zen"
