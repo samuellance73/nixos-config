@@ -12,8 +12,13 @@
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
-  hardware.graphics.enable = true;
-
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs;[
+      intel-media-driver # The modern video decoding driver for Intel Iris Xe
+      libvdpau-va-gl
+    ];
+  };
   zramSwap.enable = true;
   services.thermald.enable = true;
   services.fwupd.enable = true;
