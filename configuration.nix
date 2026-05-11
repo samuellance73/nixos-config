@@ -175,24 +175,27 @@
     dockerCompat = true;
     defaultNetwork.settings.dns_enabled = true;
   };
+  
 programs.mosh.enable = true;
   services.flatpak.enable = true;
  services.zapret = {
     enable = true;
     
      params =[
-      /*
+      
       "--dpi-desync=fake"
 "--dpi-desync-ttl=3"
 "--dpi-desync-fake-tls=0x00000000"
 "--dpi-desync-fake-tls=!"
 "--dpi-desync-fake-tls-mod=rnd,rndsni,dupsid"
-*/
 
+
+/*
       "--dpi-desync=split2"           
       "--dpi-desync-split-pos=midsld" 
       "--dpi-desync-fooling=md5sig"
       "--hostcase"     
+    */
 
 ];
   
@@ -247,6 +250,9 @@ networking.networkmanager.dns = "none";
     vim
     wget
 
+    ripgrep
+    
+    fzf
     btop
     eza
     tmux
@@ -255,6 +261,9 @@ networking.networkmanager.dns = "none";
     unzip       # Support for .zip
     zip
     rar         # Support for .rar
+
+    gcc
+    gnumake
 
 ];
 

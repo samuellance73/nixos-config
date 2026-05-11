@@ -3,6 +3,7 @@
   pkgs,
   lib,
   inputs,
+  
   ...
 }:
 
@@ -19,12 +20,20 @@ in
   home.packages = with pkgs; [
     htop grim slurp kitty libnotify hyprpolkitagent hyprlock
     waybar bluez brightnessctl networkmanagerapplet micro
-    ncdu proton-vpn vscode-fhs gnome-clocks pavucontrol
-    hyprsunset jq neovim nerd-fonts.symbols-only
+    ncdu proton-vpn gnome-clocks pavucontrol
+    hyprsunset jq nerd-fonts.symbols-only
     nerd-fonts.jetbrains-mono wl-clipboard nixd
     epiphany bat ripgrep antigravity-fhs ffmpeg
-    zed-editor-fhs github-cli
+    zed-editor-fhs github-cli neovim fd lazygit trash-cli tree-sitter luarocks
+  python3
   ];
+
+  
+
+programs.vscode = {
+  enable = true;
+  package = pkgs.vscodium-fhs; # This tells Home Manager to use Codium
+};
   programs.mpv = {
   enable = true;
   };
@@ -34,6 +43,8 @@ in
   programs.fzf = {
   enable = true;
   };
+
+
 programs.fish = {
   enable = true;
 };
@@ -289,6 +300,7 @@ programs.zoxide = {
       ".ssh"
       "Safe"
       ".var/app/app.zen_browser.zen"
+      ".config/Antigravity"
     ];
   };
 

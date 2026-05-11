@@ -15,7 +15,11 @@
     
     impermanence.url = "github:nix-community/impermanence";
 
-    # --- ADDED HOME MANAGER ---
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -30,18 +34,29 @@
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules =[
+        
         ({ config, pkgs, ... }: {
           nixpkgs.overlays = [ inputs.nur.overlays.default ];
         })
 
         disko.nixosModules.disko
         impermanence.nixosModules.impermanence
-        
-        home-manager.nixosModules.home-manager
+
         stylix.nixosModules.stylix
         ./disko.nix
         ./hardware-configuration.nix
         ./configuration.nix
+
+        home-manager.nixosModules.home-manager {
+          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.users.trueking = {
+            imports = [
+              # THIS IS THE MISSING PIECE:
+               
+            ];
+          };
+        }
+
       ];
     };
   };
