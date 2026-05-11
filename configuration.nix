@@ -7,6 +7,7 @@
       efi.canTouchEfiVariables = true;
     };
     tmp.cleanOnBoot = true;
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   fonts.packages = with pkgs; [
@@ -39,6 +40,23 @@
   services.tlp = {
     enable = true;
   };
+
+
+
+
+  programs.virt-manager.enable = true;
+
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true;
+    };
+  };
+
+
+
   environment.persistence."/persist" = {
     hideMounts = true;
     directories =[

@@ -52,6 +52,8 @@ programs.zoxide = {
       name = "default";
       isDefault = true;
       settings = {
+
+
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "layers.acceleration.force-enabled" = true;
         "svg.context-properties.content.enabled" = true;
@@ -62,6 +64,8 @@ programs.zoxide = {
         "sidebar.revamp" = true;
         "sidebar.verticalTabs" = true;
         "user.theme.catppuccin-mocha" = true;
+        "webgl.disabled" = false;
+        "librewolf.webgl.prompt" = false;
 
 
         #BETTERFOX FASTFOX
@@ -83,26 +87,38 @@ programs.zoxide = {
       "dom.iframe_lazy_loading.enabled" = true;
       "dom.enable_web_task_scheduling" = true;
 
+   
       # SECTION: GFX RENDERING TWEAKS
+      
       "gfx.webrender.all" = true;
-      "gfx.webrender.precache-shaders" = true;
-      "gfx.webrender.compositor" = true;
-      "gfx.webrender.compositor.force-enabled" = true;
-      "gfx.webrender.layer-compositor" = true;
-      "media.wmf.zero-copy-nv12-textures-force-enabled" = true;
+      #"gfx.webrender.precache-shaders" = true;
+      #"gfx.webrender.compositor" = true;
+      #"gfx.webrender.compositor.force-enabled" = true;
+      #"gfx.webrender.layer-compositor" = true;
+      #"media.wmf.zero-copy-nv12-textures-force-enabled" = true;
+
+
       "gfx.canvas.accelerated" = true;
-      "gfx.canvas.accelerated.cache-items" = 4096;
-      "gfx.canvas.accelerated.cache-size" = 512;
-      "gfx.canvas.max-size" = 32767;
-      "webgl.max-size" = 16384;
-      "webgl.force-enabled" = true;
+
+      #"gfx.canvas.accelerated.cache-items" = 4096;
+      #"gfx.canvas.accelerated.cache-size" = 512;
+      #"gfx.canvas.max-size" = 32767;
+
+      #"webgl.max-size" = 16384;
+      #"webgl.force-enabled" = true;
+
       "layers.gpu-process.enabled" = true;
-      "layers.gpu-process.force-enabled" = true;
+
+      #"layers.gpu-process.force-enabled" = true;
+
       "media.hardware-video-decoding.enabled" = true;
-      "media.hardware-video-decoding.force-enabled" = true;
-      "media.gpu-process-decoder" = true;
+
+    #   "media.hardware-video-decoding.force-enabled" = true;
+     # "media.gpu-process-decoder" = true;
+      
 
       # SECTION: DISK CACHE
+      
       "browser.cache.disk.smart_size.enabled" = false;
       "browser.cache.disk.capacity" = 512000;
       "browser.cache.disk.max_entry_size" = 51200;
@@ -119,6 +135,7 @@ programs.zoxide = {
       "browser.cache.jsbc_compression_level" = 3;
       "dom.script_loader.bytecode_cache.enabled" = true;
       "dom.script_loader.bytecode_cache.strategy" = 0;
+      
 
       # SECTION: MEMORY CACHE
       "browser.cache.memory.capacity" = 131072;
@@ -140,6 +157,7 @@ programs.zoxide = {
       "image.cache.size" = 10485760;
       "image.mem.decode_bytes_at_a_time" = 65536;
       "image.mem.shared.unmap.min_expiration_ms" = 120000;
+      
 
       # SECTION: NETWORK
       "network.buffer.cache.size" = 65535;
@@ -172,7 +190,10 @@ programs.zoxide = {
       "fission.webContentIsolationStrategy" = 1;
       "browser.preferences.defaultPerformanceSettings.enabled" = true;
 
-          "apz.overscroll.enabled" = true;
+
+
+
+    "apz.overscroll.enabled" = true;
     "general.smoothScroll" = true;
     "general.smoothScroll.msdPhysics.continuousMotionMaxDeltaMS" = 12;
     "general.smoothScroll.msdPhysics.enabled" = true;
@@ -184,6 +205,15 @@ programs.zoxide = {
     "general.smoothScroll.currentVelocityWeighting" = "1";
     "general.smoothScroll.stopDecelerationWeighting" = "1";
     "mousewheel.default.delta_multiplier_y" = 300;
+
+      "devtools.chrome.enabled" = true;
+
+   # "browser.compactmode.show" = true;
+    #"browser.uidensity" = 1; # 1 = Compact, 0 = Normal, 2 = Touch
+
+
+
+
 
       };
 
