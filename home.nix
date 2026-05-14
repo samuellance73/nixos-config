@@ -241,6 +241,7 @@ programs.zoxide = {
         dearrow
         multi-account-containers
         sidebery
+        foxyproxy-standard
       ];
     };
 

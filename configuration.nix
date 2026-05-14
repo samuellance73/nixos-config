@@ -184,11 +184,10 @@ programs.mosh.enable = true;
      params =[
       
       "--dpi-desync=fake"
-"--dpi-desync-ttl=3"
-"--dpi-desync-fake-tls=0x00000000"
-"--dpi-desync-fake-tls=!"
-"--dpi-desync-fake-tls-mod=rnd,rndsni,dupsid"
-
+      "--dpi-desync-ttl=3"
+      "--dpi-desync-fake-tls=0x00000000"
+      "--dpi-desync-fake-tls=!"
+      "--dpi-desync-fake-tls-mod=rnd,rndsni,dupsid"
 
 /*
       "--dpi-desync=split2"           
@@ -236,7 +235,16 @@ networking.networkmanager.dns = "none";
     nh.enable = true;
     git.enable = true;
     nix-ld.enable = true;
-
+    nix-ld.libraries = with pkgs; [
+      stdenv.cc.cc.lib       
+      zlib
+      fuse3                  
+      icu
+      nss
+      openssl
+      curl
+      expat
+    ];
     kdeconnect = {
       enable = true;
     };
@@ -249,6 +257,7 @@ networking.networkmanager.dns = "none";
     steam-run
     vim
     wget
+    tree
 
     ripgrep
     
