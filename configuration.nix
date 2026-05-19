@@ -40,7 +40,7 @@
   services.tlp = {
     enable = true;
   };
-
+  services.cloudflare-warp.enable = true;
 
 
 
@@ -150,7 +150,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-
     jack.enable = true;
   };
   services.gnome.gnome-keyring.enable = true;
@@ -170,6 +169,10 @@
     };
   };
 
+
+
+
+
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;
@@ -182,19 +185,19 @@ programs.mosh.enable = true;
     enable = true;
     
      params =[
-      
+/*
       "--dpi-desync=fake"
       "--dpi-desync-ttl=3"
       "--dpi-desync-fake-tls=0x00000000"
       "--dpi-desync-fake-tls=!"
       "--dpi-desync-fake-tls-mod=rnd,rndsni,dupsid"
 
-/*
+*/
       "--dpi-desync=split2"           
       "--dpi-desync-split-pos=midsld" 
       "--dpi-desync-fooling=md5sig"
       "--hostcase"     
-    */
+    
 
 ];
   
@@ -225,7 +228,7 @@ networking.networkmanager.dns = "none";
     };
   };
   
-
+networking.firewall.checkReversePath = "loose";
 
 /*
     services.resolved = {
@@ -234,17 +237,43 @@ networking.networkmanager.dns = "none";
   programs = {
     nh.enable = true;
     git.enable = true;
-    nix-ld.enable = true;
-    nix-ld.libraries = with pkgs; [
-      stdenv.cc.cc.lib       
-      zlib
-      fuse3                  
-      icu
-      nss
-      openssl
-      curl
-      expat
-    ];
+nix-ld.enable = true;
+  nix-ld.libraries = with pkgs; [
+    # --- Your existing libraries ---
+    stdenv.cc.cc.lib       
+    zlib
+    fuse3                  
+    icu
+    nss
+    openssl
+    curl
+    expat
+    nspr
+    atk
+    at-spi2-atk
+    libdrm
+    mesa
+    alsa-lib
+    dbus
+    libxkbcommon
+    xorg.libX11
+    xorg.libXcomposite
+    xorg.libXdamage
+    xorg.libXext
+    xorg.libXfixes
+    xorg.libXrandr
+    libglvnd
+
+    # --- ADD THESE FOR GEPH ---
+    glib                # Fixes the libgio-2.0.so.0 error
+    gtk3                # Required for the windowing system
+    webkitgtk_4_1       # Required for the Geph GUI (Wry WebView)
+    pango               # Text rendering
+    cairo               # Graphics rendering
+    gdk-pixbuf          # Image loading
+    libsoup_3           # Network support for the WebView
+    libsecret           # Often needed for credential storage
+  ];
     kdeconnect = {
       enable = true;
     };
@@ -258,7 +287,8 @@ networking.networkmanager.dns = "none";
     vim
     wget
     tree
-
+    killall
+    
     ripgrep
     
     fzf

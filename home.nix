@@ -25,7 +25,8 @@ in
     nerd-fonts.jetbrains-mono wl-clipboard nixd
     epiphany bat ripgrep antigravity-fhs ffmpeg
     zed-editor-fhs github-cli neovim fd lazygit trash-cli tree-sitter luarocks
-  python3
+  python3 mission-center chisel uv gost
+
   ];
 
   
@@ -204,6 +205,7 @@ programs.zoxide = {
 
 
 
+
     "apz.overscroll.enabled" = true;
     "general.smoothScroll" = true;
     "general.smoothScroll.msdPhysics.continuousMotionMaxDeltaMS" = 12;
@@ -218,6 +220,7 @@ programs.zoxide = {
     "mousewheel.default.delta_multiplier_y" = 300;
 
       "devtools.chrome.enabled" = true;
+
 
    # "browser.compactmode.show" = true;
     #"browser.uidensity" = 1; # 1 = Compact, 0 = Normal, 2 = Touch
