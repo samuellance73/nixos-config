@@ -2,6 +2,7 @@
 
 {
   boot = {
+    kernelParams = [  ];
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -41,7 +42,6 @@
     enable = true;
   };
   services.cloudflare-warp.enable = true;
-
 
 
   programs.virt-manager.enable = true;
@@ -237,7 +237,7 @@ networking.firewall.checkReversePath = "loose";
   programs = {
     nh.enable = true;
     git.enable = true;
-nix-ld.enable = true;
+    nix-ld.enable = true;
   nix-ld.libraries = with pkgs; [
     # --- Your existing libraries ---
     stdenv.cc.cc.lib       
