@@ -73,7 +73,6 @@
   };
 
   networking = {
-    hostName = "latitude";
     networkmanager.enable = true;
 
     hosts = {
@@ -191,17 +190,18 @@ programs.mosh.enable = true;
       "--dpi-desync-fake-tls=0x00000000"
       "--dpi-desync-fake-tls=!"
       "--dpi-desync-fake-tls-mod=rnd,rndsni,dupsid"
-
 */
+
       "--dpi-desync=split2"           
       "--dpi-desync-split-pos=midsld" 
       "--dpi-desync-fooling=md5sig"
       "--hostcase"     
-    
+ 
 
 ];
   
   };
+
 /*
     networking.nameservers = [
     "1.1.1.1"
@@ -210,7 +210,7 @@ programs.mosh.enable = true;
     "8.8.4.4#dns.google" 
     ];*/
 
-
+networking.hostName = "DESKTOP-7K3N2PL";
 networking.nameservers =[ "127.0.0.1"];
 networking.networkmanager.dns = "none";
 
@@ -229,6 +229,8 @@ networking.networkmanager.dns = "none";
   };
   
 networking.firewall.checkReversePath = "loose";
+
+
 
 /*
     services.resolved = {
@@ -288,6 +290,7 @@ networking.firewall.checkReversePath = "loose";
     wget
     tree
     killall
+    file
     
     ripgrep
     
@@ -302,6 +305,7 @@ networking.firewall.checkReversePath = "loose";
     rar         # Support for .rar
 
     gcc
+
     gnumake
 
 ];

@@ -25,7 +25,7 @@ in
     nerd-fonts.jetbrains-mono wl-clipboard nixd
     epiphany bat ripgrep antigravity-fhs ffmpeg
     zed-editor-fhs github-cli neovim fd lazygit trash-cli tree-sitter luarocks
-  python3 mission-center chisel uv gost code-cursor-fhs
+  python3 mission-center chisel uv gost code-cursor-fhs obsidian easyeffects
 
   ];
 
@@ -306,6 +306,7 @@ programs.zoxide = {
       "Safe"
       ".var/app/app.zen_browser.zen"
       ".config/Antigravity"
+      ".local/share/Trash"
     ];
   };
 
