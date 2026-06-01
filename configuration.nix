@@ -184,19 +184,19 @@ programs.mosh.enable = true;
     enable = true;
     
      params =[
-/*
+
       "--dpi-desync=fake"
       "--dpi-desync-ttl=3"
       "--dpi-desync-fake-tls=0x00000000"
       "--dpi-desync-fake-tls=!"
       "--dpi-desync-fake-tls-mod=rnd,rndsni,dupsid"
-*/
 
+/*
       "--dpi-desync=split2"           
       "--dpi-desync-split-pos=midsld" 
       "--dpi-desync-fooling=md5sig"
       "--hostcase"     
- 
+ */
 
 ];
   
@@ -210,6 +210,9 @@ programs.mosh.enable = true;
     "8.8.4.4#dns.google" 
     ];*/
 
+services.cloudflared = {
+  enable = true;
+};
 networking.hostName = "DESKTOP-7K3N2PL";
 networking.nameservers =[ "127.0.0.1"];
 networking.networkmanager.dns = "none";
