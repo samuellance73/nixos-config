@@ -45,7 +45,8 @@
 
 
   programs.virt-manager.enable = true;
-
+  virtualisation.waydroid.enable = true;
+  virtualisation.waydroid.package = pkgs.waydroid-nftables; 
   virtualisation.libvirtd = {
     enable = true;
     qemu = {
@@ -54,6 +55,7 @@
       swtpm.enable = true;
     };
   };
+
 
 
 
@@ -66,6 +68,7 @@
       "/var/lib/bluetooth"
       "/var/lib/flatpak"
       "/var/lib/containers"
+      "/var/lib/waydroid/images"
     ];
     files = [
       "/etc/machine-id"
@@ -74,7 +77,7 @@
 
   networking = {
     networkmanager.enable = true;
-
+    firewall.trustedInterfaces = [ "waydroid0" ];
     hosts = {
       "0.0.0.0" =[
         "www.arras.io"
@@ -105,6 +108,7 @@
     image = ./wallpapers/city-horizon.jpg;
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    targets.kmscon.enable = false;
     
   cursor = {
     package = pkgs.bibata-cursors;
@@ -184,19 +188,19 @@ programs.mosh.enable = true;
     enable = true;
     
      params =[
-
+/*
       "--dpi-desync=fake"
       "--dpi-desync-ttl=3"
       "--dpi-desync-fake-tls=0x00000000"
       "--dpi-desync-fake-tls=!"
       "--dpi-desync-fake-tls-mod=rnd,rndsni,dupsid"
 
-/*
+*/
       "--dpi-desync=split2"           
       "--dpi-desync-split-pos=midsld" 
       "--dpi-desync-fooling=md5sig"
       "--hostcase"     
- */
+ 
 
 ];
   
@@ -213,7 +217,7 @@ programs.mosh.enable = true;
 services.cloudflared = {
   enable = true;
 };
-networking.hostName = "DESKTOP-7K3N2PL";
+networking.hostName = "latitude";
 networking.nameservers =[ "127.0.0.1"];
 networking.networkmanager.dns = "none";
 
