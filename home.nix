@@ -18,7 +18,7 @@ in
   home.homeDirectory = "/home/trueking";
 
   home.packages = with pkgs; [
-    htop grim slurp kitty libnotify hyprpolkitagent hyprlock
+    htop grim slurp libnotify hyprpolkitagent hyprlock
     waybar bluez brightnessctl networkmanagerapplet micro
     ncdu proton-vpn gnome-clocks pavucontrol
     hyprsunset jq nerd-fonts.symbols-only
@@ -29,7 +29,9 @@ in
 
   ];
 
-  
+programs.ghostty = {
+  enable = true;
+};
 
 programs.vscode = {
   enable = true;

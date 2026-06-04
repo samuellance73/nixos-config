@@ -30,7 +30,7 @@
   # --- ADDED home-manager TO OUTPUTS ---
   outputs = { self, nixpkgs, disko, impermanence, home-manager, stylix, ... }@inputs: {
     # "latitude" is your hostname. You will use this in the install command.
-    nixosConfigurations.DESKTOP-7K3N2PL = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.latitude = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules =[

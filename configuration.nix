@@ -217,6 +217,7 @@ programs.mosh.enable = true;
 services.cloudflared = {
   enable = true;
 };
+
 networking.hostName = "latitude";
 networking.nameservers =[ "127.0.0.1"];
 networking.networkmanager.dns = "none";
