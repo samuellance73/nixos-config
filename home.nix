@@ -26,8 +26,17 @@ in
     epiphany bat ripgrep antigravity-fhs ffmpeg
     zed-editor-fhs github-cli neovim fd lazygit trash-cli tree-sitter luarocks
   python3 mission-center chisel uv gost code-cursor-fhs obsidian easyeffects opencode windsurf nodejs_24
+  calibre qview
 
   ];
+
+xdg.mimeApps = {
+  enable = true;
+  defaultApplications = {
+    "image/*" = [ "qView.desktop" ];
+    "text/*" = [ "codium.desktop" ];
+  };
+};
 
 programs.ghostty = {
   enable = true;
