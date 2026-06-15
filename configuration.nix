@@ -347,5 +347,5 @@ nix = {
 # Optimise storage by hard-linking duplicate files
 nix.settings.auto-optimise-store = true;
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.11";
 }
