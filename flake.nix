@@ -43,18 +43,14 @@
         impermanence.nixosModules.impermanence
 
         stylix.nixosModules.stylix
-        ./disko.nix
-        ./hardware-configuration.nix
-        ./configuration.nix
+        ./hosts/latitude
 
         home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
           home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.users.trueking = {
-            imports = [
-              # THIS IS THE MISSING PIECE:
-               
-            ];
-          };
+          home-manager.users.trueking = import ./home.nix;
         }
 
       ];
