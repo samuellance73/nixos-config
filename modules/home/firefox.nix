@@ -41,6 +41,11 @@ let
     "privacy.clearOnShutdown_v2.browsingHistoryAndDownloads" = true; # Preserves browsing history
     "privacy.clearOnShutdown_v2.historyFormDataAndDownloads" = true; # Legacy override (forces history preservation)
     "privacy.clearOnShutdown_v2.siteSettings" = false;                # Keeps your Google/GitHub exceptions alive
+
+    # DNS over HTTPS (Cloudflare)
+    "network.trr.mode" = 2; # 2 = Secure DoH with native local fallback; 3 = Strict DoH only
+    "network.trr.uri" = "https://mozilla.cloudflare-dns.com/dns-query"; # Use Cloudflare
+    "network.trr.bootstrapAddress" = "1.1.1.1"; # Directly connects to Cloudflare IP to avoid unencrypted lookup leak
   };
 
   commonExtensions = with pkgs.nur.repos.rycee.firefox-addons; [
@@ -97,12 +102,6 @@ in
         WebSuggestions = false;
         SponsoredSuggestions = false;
         ImproveSuggest = false;
-        Locked = true;
-      };
-
-      DNSOverHTTPS = {
-        Enabled = true;
-        ProviderURL = "https://mozilla.cloudflare-dns.com/dns-query";
         Locked = true;
       };
 
