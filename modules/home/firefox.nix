@@ -31,7 +31,17 @@ let
 
   librewolfSettings = commonSettings;
 
-  firefoxSettings = commonSettings;
+  firefoxSettings = commonSettings // {
+    "privacy.sanitize.sanitizeOnShutdown" = true;
+    "privacy.clearOnShutdown_v2.cookiesAndStorage" = true; # Clears cookies AND LocalStorage (honors your whitelist)
+    "privacy.clearOnShutdown_v2.cache" = true;             # Clears browser cache on close
+    "privacy.clearOnShutdown_v2.formdata" = true;          # Clears form history
+
+
+    "privacy.clearOnShutdown_v2.browsingHistoryAndDownloads" = true; # Preserves browsing history
+    "privacy.clearOnShutdown_v2.historyFormDataAndDownloads" = true; # Legacy override (forces history preservation)
+    "privacy.clearOnShutdown_v2.siteSettings" = false;                # Keeps your Google/GitHub exceptions alive
+  };
 
   commonExtensions = with pkgs.nur.repos.rycee.firefox-addons; [
     vimium-c
@@ -87,6 +97,21 @@ in
         WebSuggestions = false;
         SponsoredSuggestions = false;
         ImproveSuggest = false;
+        Locked = true;
+      };
+
+      DNSOverHTTPS = {
+        Enabled = true;
+        ProviderURL = "https://mozilla.cloudflare-dns.com/dns-query";
+        Locked = true;
+      };
+
+      Cookies = {
+        Allow = [
+          "https://github.com"
+          "https://accounts.google.com"
+        ];
+        Behavior = "reject-tracker-and-partition-foreign";
         Locked = true;
       };
     };
