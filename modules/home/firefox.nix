@@ -34,18 +34,18 @@ let
   firefoxSettings = commonSettings // {
     "privacy.sanitize.sanitizeOnShutdown" = true;
     "privacy.clearOnShutdown_v2.cookiesAndStorage" = true; # Clears cookies AND LocalStorage (honors your whitelist)
-    "privacy.clearOnShutdown_v2.cache" = true;             # Clears browser cache on close
-    "privacy.clearOnShutdown_v2.formdata" = true;          # Clears form history
+    "privacy.clearOnShutdown_v2.cache" = true;             
+    "privacy.clearOnShutdown_v2.formdata" = true;          
 
 
-    "privacy.clearOnShutdown_v2.browsingHistoryAndDownloads" = true; # Preserves browsing history
-    "privacy.clearOnShutdown_v2.historyFormDataAndDownloads" = true; # Legacy override (forces history preservation)
-    "privacy.clearOnShutdown_v2.siteSettings" = false;                # Keeps your Google/GitHub exceptions alive
+    "privacy.clearOnShutdown_v2.browsingHistoryAndDownloads" = true; 
+    "privacy.clearOnShutdown_v2.historyFormDataAndDownloads" = true; 
+    "privacy.clearOnShutdown_v2.siteSettings" = false;                
 
     # DNS over HTTPS (Cloudflare)
-    "network.trr.mode" = 2; # 2 = Secure DoH with native local fallback; 3 = Strict DoH only
-    "network.trr.uri" = "https://mozilla.cloudflare-dns.com/dns-query"; # Use Cloudflare
-    "network.trr.bootstrapAddress" = "1.1.1.1"; # Directly connects to Cloudflare IP to avoid unencrypted lookup leak
+    "network.trr.mode" = 2; 
+    "network.trr.uri" = "https://mozilla.cloudflare-dns.com/dns-query";
+    "network.trr.bootstrapAddress" = "1.1.1.1"; 
   };
 
   commonExtensions = with pkgs.nur.repos.rycee.firefox-addons; [
@@ -122,6 +122,7 @@ in
         path = "ephemeral";
         isDefault = true;
         settings = firefoxSettings;
+        bookmarks = import ../../bookmarks.nix;
         extraConfig = betterfoxConfig;
         extensions.packages = firefoxExtensions;
       };
@@ -132,6 +133,7 @@ in
         path = "persistent";
         isDefault = false;
         settings = firefoxSettings;
+        bookmarks = import ../../bookmarks.nix;
         extraConfig = betterfoxConfig;
         extensions.packages = firefoxExtensions;
       };
