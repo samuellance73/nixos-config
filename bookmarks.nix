@@ -20,6 +20,10 @@
         name = "GitHub";
         url = "https://github.com";
       }
+      {
+        name = "Astral Codex Ten";
+        url = "https://astralcodexten.com";
+      }
     ];
   }
 ]

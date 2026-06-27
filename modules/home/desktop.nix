@@ -72,7 +72,7 @@ in
   services.swaync.enable = true;
   programs.rofi.enable = true;
 
-  xdg.configFile."waybar".source = config.lib.file.mkOutOfStoreSymlink "/persist/etc/nixos/dotfiles/waybar/mech";
+  xdg.configFile."waybar".source = config.lib.file.mkOutOfStoreSymlink "/persist/etc/nixos/dotfiles/waybar/velvet";
   xdg.configFile."hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink "/persist/etc/nixos/dotfiles/hypr/hyprland.conf";
   xdg.configFile."Kvantum/kvantum.kvconfig".enable = false;
 }

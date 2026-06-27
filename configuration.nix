@@ -17,6 +17,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
   services.tailscale.enable = true;
   services.gnome.gnome-keyring.enable = true;
+  security.pam.services.login.enableGnomeKeyring = true;
   security.polkit.enable = true;
 
   users.users = {

@@ -122,7 +122,7 @@ in
         path = "ephemeral";
         isDefault = true;
         settings = firefoxSettings;
-        bookmarks = import ../../bookmarks.nix;
+        bookmarks = { force = true; settings = import ../../bookmarks.nix; };
         extraConfig = betterfoxConfig;
         extensions.packages = firefoxExtensions;
       };
@@ -133,7 +133,7 @@ in
         path = "persistent";
         isDefault = false;
         settings = firefoxSettings;
-        bookmarks = import ../../bookmarks.nix;
+        bookmarks = { force = true; settings = import ../../bookmarks.nix; };
         extraConfig = betterfoxConfig;
         extensions.packages = firefoxExtensions;
       };
