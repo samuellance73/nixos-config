@@ -29,7 +29,6 @@ let
     "browser.tabs.closeWindowWithLastTab" = false;
   };
 
-  librewolfSettings = commonSettings;
 
   firefoxSettings = commonSettings // {
     "privacy.sanitize.sanitizeOnShutdown" = true;
@@ -63,14 +62,12 @@ let
     bypass-paywalls-clean
   ];
 
-  librewolfExtensions = commonExtensions;
 
   firefoxExtensions = commonExtensions ++ (with pkgs.nur.repos.rycee.firefox-addons; [
     ublock-origin
   ]);
 in
 {
-  stylix.targets.librewolf.profileNames = [ "ephemeral" ];
   stylix.targets.firefox.profileNames = [ "ephemeral" "persistent" ];
 
   programs.firefox = {
@@ -113,6 +110,13 @@ in
         Behavior = "reject-tracker-and-partition-foreign";
         Locked = true;
       };
+
+      ExtensionSettings = {
+        "uBlock0@raymondhill.net" = {
+          installation_mode = "allowed";
+          private_browsing = true; # Automatically grants the Private Windows permission
+        };
+      };
     };
 
     profiles = {
@@ -140,21 +144,6 @@ in
     };
   };
 
-  programs.librewolf = {
-    enable = true;
-    package = pkgs.librewolf-bin; # Overrides the default source build
-
-    profiles = {
-      ephemeral = {
-        id = 0;
-        name = "ephemeral";
-        path = "ephemeral";
-        isDefault = true;
-        settings = librewolfSettings;
-        extensions.packages = librewolfExtensions;
-      };
-    };
-  };
 
   # Apply FF-ULTIMA theme to Firefox profiles
   xdg.configFile."mozilla/firefox/ephemeral/chrome".source = ffultima-src;

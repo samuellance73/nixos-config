@@ -71,10 +71,6 @@
     allowUnfree = true;
   };
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "librewolf-bin-${pkgs.librewolf-bin.version}"
-    "librewolf-bin-unwrapped-${pkgs.librewolf-bin-unwrapped.version}"
-  ];
 
   nix = {
     settings = {

@@ -10,7 +10,9 @@
   networking.hostName = "latitude";
 
   boot = {
-    kernelParams = [ ];
+    kernelParams = [ 
+
+    ];
     initrd.systemd.enable = true; 
     loader = {
       systemd-boot.enable = true;
