@@ -39,7 +39,7 @@ let
     "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
     "svg.context-properties.content.enabled" = true;
     "sidebar.revamp" = true;
-    "sidebar.verticalTabs" = true;
+    "sidebar.verticalTabs" = false;
     "devtools.chrome.enabled" = true;
     "user.theme.catppuccin-mocha" = true;
     "browser.tabs.closeWindowWithLastTab" = false;
@@ -59,6 +59,31 @@ let
     "privacy.clearOnShutdown_v2.historyFormDataAndDownloads" = true;
     "privacy.clearOnShutdown_v2.siteSettings" = false;
     "ultima.sidebery.autohide" = false;
+    "ultima.tabs.tabbar.disabled" = true;
+
+    "widget.use-xdg-desktop-portal.file-picker" = 1;
+
+    
+    "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;     
+
+    "browser.newtabpage.pinned" = builtins.toJSON [
+      {
+        title = "NixOS Search";
+        url = "https://search.nixos.org";
+      }
+      {
+        title = "GitHub";
+        url = "https://github.com";
+      }
+      {
+        title = "Reddit";
+        url = "https://reddit.com";
+      }
+      {
+        title = "YouTube";
+        url = "https://youtube.com";
+      }
+    ];
   };
 
   persistentSettings = ephemeralSettings;
