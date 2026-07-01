@@ -64,8 +64,6 @@ let
     "widget.use-xdg-desktop-portal.file-picker" = 1;
 
     
-    "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;     
-
     "browser.newtabpage.pinned" = builtins.toJSON [
       {
         title = "NixOS Search";
