@@ -26,6 +26,6 @@
     uv
     gost
     nodejs_24
-    windsurf
+    devin-desktop
   ];
 }

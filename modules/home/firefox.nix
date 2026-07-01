@@ -18,8 +18,24 @@ let
   };
 
   betterfoxConfig = builtins.readFile betterfox-js;
+  ffultimaConfig = builtins.readFile "${ffultima-src}/user.js";
 
-  commonSettings = {
+  # Helper to format Nix attrsets as user_pref lines for user.js
+  mkUserJs = prefs: lib.concatStringsSep "\n" (
+    lib.mapAttrsToList (name: value:
+      let
+        valStr =
+          if builtins.isBool value then (if value then "true" else "false")
+          else if builtins.isInt value then builtins.toString value
+          else if builtins.isString value then ''"${value}"''
+          else throw "Unsupported type for preference: ${name}";
+      in
+        "user_pref(\"${name}\", ${valStr});"
+    ) prefs
+  );
+
+  ephemeralSettings = {
+    # UI/UX
     "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
     "svg.context-properties.content.enabled" = true;
     "sidebar.revamp" = true;
@@ -27,25 +43,25 @@ let
     "devtools.chrome.enabled" = true;
     "user.theme.catppuccin-mocha" = true;
     "browser.tabs.closeWindowWithLastTab" = false;
-  };
-
-
-  firefoxSettings = commonSettings // {
-    "privacy.sanitize.sanitizeOnShutdown" = true;
-    "privacy.clearOnShutdown_v2.cookiesAndStorage" = true; # Clears cookies AND LocalStorage (honors your whitelist)
-    "privacy.clearOnShutdown_v2.cache" = true;             
-    "privacy.clearOnShutdown_v2.formdata" = true;          
-
-
-    "privacy.clearOnShutdown_v2.browsingHistoryAndDownloads" = true; 
-    "privacy.clearOnShutdown_v2.historyFormDataAndDownloads" = true; 
-    "privacy.clearOnShutdown_v2.siteSettings" = false;                
+    "privacy.trackingprotection.allow_list.baseline.enabled" = true;
 
     # DNS over HTTPS (Cloudflare)
-    "network.trr.mode" = 2; 
+    "network.trr.mode" = 2;
     "network.trr.uri" = "https://mozilla.cloudflare-dns.com/dns-query";
-    "network.trr.bootstrapAddress" = "1.1.1.1"; 
+    "network.trr.bootstrapAddress" = "1.1.1.1";
+
+    # Privacy - clear on shutdown
+    "privacy.sanitize.sanitizeOnShutdown" = true;
+    "privacy.clearOnShutdown_v2.cookiesAndStorage" = true;
+    "privacy.clearOnShutdown_v2.cache" = true;
+    "privacy.clearOnShutdown_v2.formdata" = true;
+    "privacy.clearOnShutdown_v2.browsingHistoryAndDownloads" = true;
+    "privacy.clearOnShutdown_v2.historyFormDataAndDownloads" = true;
+    "privacy.clearOnShutdown_v2.siteSettings" = false;
+    "ultima.sidebery.autohide" = false;
   };
+
+  persistentSettings = ephemeralSettings;
 
   commonExtensions = with pkgs.nur.repos.rycee.firefox-addons; [
     vimium-c
@@ -62,10 +78,42 @@ let
     bypass-paywalls-clean
   ];
 
-
   firefoxExtensions = commonExtensions ++ (with pkgs.nur.repos.rycee.firefox-addons; [
     ublock-origin
   ]);
+
+  commonContainers = {
+    sanctuary = {
+      id = 1;
+      name = "Sanctuary";
+      color = "blue";
+      icon = "circle";
+    };
+    forge = {
+      id = 2;
+      name = "Forge";
+      color = "orange";
+      icon = "briefcase";
+    };
+    bazaar = {
+      id = 3;
+      name = "Bazaar";
+      color = "green";
+      icon = "cart";
+    };
+    nexus = {
+      id = 4;
+      name = "Nexus";
+      color = "pink";
+      icon = "fingerprint";
+    };
+    vault = {
+      id = 5;
+      name = "Vault";
+      color = "purple";
+      icon = "dollar";
+    };
+  };
 in
 {
   stylix.targets.firefox.profileNames = [ "ephemeral" "persistent" ];
@@ -74,18 +122,26 @@ in
     enable = true;
 
     policies = {
+      # Core
       DisableTelemetry = true;
       DisableFirefoxStudies = true;
       DisablePocket = true;
-      OfferToSaveLogins = false;
-      PasswordManagerEnabled = false;
+      DisableSystemAddonUpdate = true;
       DontCheckDefaultBrowser = true;
 
+      # Privacy & Security
+      OfferToSaveLogins = false;
+      PasswordManagerEnabled = false;
       AutofillAddressEnabled = false;
       AutofillCreditCardEnabled = false;
-      DisableFeedbackCommands = true;
-      DisableSystemAddonUpdate = true;
 
+      # UI/UX
+      DisableFeedbackCommands = true;
+
+      OverrideFirstRunPage = "";
+      OverridePostUpdatePage = "";
+
+      # User Messaging
       UserMessaging = {
         ExtensionRecommendations = false;
         FeatureRecommendations = false;
@@ -111,11 +167,27 @@ in
         Locked = true;
       };
 
-      ExtensionSettings = {
-        "uBlock0@raymondhill.net" = {
-          installation_mode = "allowed";
-          private_browsing = true; # Automatically grants the Private Windows permission
-        };
+      # Home Page
+      FirefoxHome = {
+        Search = true;
+        TopSites = true;
+        SponsoredTopSites = false;
+        Highlights = false;
+        Pocket = false;
+        SponsoredStories = false;
+        Snippets = false;
+        Weather = false;
+      };
+
+      SearchEngines = {
+        PreventInstalls = false;
+        Remove = [
+          "Bing"
+          "Amazon.com"
+          "eBay"
+          "Twitter"
+          "Perplexity"
+        ];
       };
     };
 
@@ -125,10 +197,12 @@ in
         name = "ephemeral";
         path = "ephemeral";
         isDefault = true;
-        settings = firefoxSettings;
+        settings = ephemeralSettings;
         bookmarks = { force = true; settings = import ../../bookmarks.nix; };
-        extraConfig = betterfoxConfig;
+        extraConfig = betterfoxConfig + "\n" + ffultimaConfig + "\n" + (mkUserJs ephemeralSettings);
         extensions.packages = firefoxExtensions;
+        containersForce = true;
+        containers = commonContainers;
       };
 
       persistent = {
@@ -136,14 +210,15 @@ in
         name = "persistent";
         path = "persistent";
         isDefault = false;
-        settings = firefoxSettings;
+        settings = persistentSettings;
         bookmarks = { force = true; settings = import ../../bookmarks.nix; };
-        extraConfig = betterfoxConfig;
+        extraConfig = betterfoxConfig + "\n" + ffultimaConfig + "\n" + (mkUserJs persistentSettings);
         extensions.packages = firefoxExtensions;
+        containersForce = true;
+        containers = commonContainers;
       };
     };
   };
-
 
   # Apply FF-ULTIMA theme to Firefox profiles
   xdg.configFile."mozilla/firefox/ephemeral/chrome".source = ffultima-src;
