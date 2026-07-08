@@ -45,6 +45,22 @@ in
     };
   };
 
+  gtk = {
+    enable = true;
+    cursorTheme = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 24;
+    };
+  };
+
+  home.sessionVariables = {
+    XCURSOR_THEME = "Bibata-Modern-Ice";
+    XCURSOR_SIZE = "24";
+    HYPRCURSOR_THEME = "Bibata-Modern-Ice";
+    HYPRCURSOR_SIZE = "24";
+  };
+
   home.packages = with pkgs; [
     htop grim slurp libnotify hyprpolkitagent hyprlock
     waybar bluez brightnessctl networkmanagerapplet micro
@@ -53,7 +69,7 @@ in
     nerd-fonts.jetbrains-mono wl-clipboard
     epiphany bat ripgrep antigravity-fhs ffmpeg
     trash-cli mission-center chisel code-cursor-fhs obsidian easyeffects opencode
-    calibre qview anki
+    calibre qview anki vlc
   ];
 
   xdg.mimeApps = {
