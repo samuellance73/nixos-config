@@ -69,7 +69,7 @@ in
     nerd-fonts.jetbrains-mono wl-clipboard
     epiphany bat ripgrep antigravity-fhs ffmpeg
     trash-cli mission-center chisel code-cursor-fhs obsidian easyeffects opencode
-    calibre qview anki vlc
+    calibre qview anki vlc localsend
   ];
 
   xdg.mimeApps = {

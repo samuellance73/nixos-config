@@ -41,6 +41,11 @@
             url = "https://claude.ai";
             keyword = "cl";
           }
+          {
+            name = "NotebookLM";
+            url = "https://notebooklm.google.com";
+            keyword = "nlm";
+          }
         ];
       }
       {

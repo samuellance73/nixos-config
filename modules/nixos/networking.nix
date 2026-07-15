@@ -25,6 +25,8 @@
     nameservers = [ "127.0.0.1" ];
     networkmanager.dns = "none";
     firewall.checkReversePath = "loose";
+    firewall.allowedTCPPorts = [ 53317 ];
+    firewall.allowedUDPPorts = [ 53317 ];
   };
 
   services.cloudflare-warp.enable = true;

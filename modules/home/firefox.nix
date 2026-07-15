@@ -84,7 +84,15 @@ let
     ];
   };
 
-  persistentSettings = ephemeralSettings;
+  persistentSettings = ephemeralSettings // {
+    # Don't clear on shutdown
+    
+    "privacy.sanitize.sanitizeOnShutdown" = false;
+    "privacy.clearOnShutdown_v2.historyFormDataAndDownloads" = false;
+
+    # Restore session tabs on startup
+    "browser.startup.page" = 3;
+  };
 
   commonExtensions = with pkgs.nur.repos.rycee.firefox-addons; [
     vimium-c
@@ -99,6 +107,7 @@ let
     sidebery
     foxyproxy-standard
     bypass-paywalls-clean
+    single-file
   ];
 
   firefoxExtensions = commonExtensions ++ (with pkgs.nur.repos.rycee.firefox-addons; [
