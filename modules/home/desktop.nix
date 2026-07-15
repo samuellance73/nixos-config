@@ -61,6 +61,18 @@ in
     HYPRCURSOR_SIZE = "24";
   };
 
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5 = {
+      waylandFrontend = true; # Suppresses GTK/QT warning messages in Wayland
+      addons = with pkgs; [
+        fcitx5-chinese-addons # Contains the Pinyin IME for Simplified Chinese
+        fcitx5-gtk            # Input support for GTK-based applications
+      ];
+    };
+  };
+
   home.packages = with pkgs; [
     htop grim slurp libnotify hyprpolkitagent hyprlock
     waybar bluez brightnessctl networkmanagerapplet micro
