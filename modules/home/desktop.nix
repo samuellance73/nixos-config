@@ -34,9 +34,6 @@ in
   fonts.fontconfig.enable = true;
 
   home.pointerCursor = {
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Ice";
-    size = 24;
     gtk.enable = true;
     x11.enable = true;
     hyprcursor = {
@@ -47,19 +44,8 @@ in
 
   gtk = {
     enable = true;
-    cursorTheme = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Ice";
-      size = 24;
-    };
   };
 
-  home.sessionVariables = {
-    XCURSOR_THEME = "Bibata-Modern-Ice";
-    XCURSOR_SIZE = "24";
-    HYPRCURSOR_THEME = "Bibata-Modern-Ice";
-    HYPRCURSOR_SIZE = "24";
-  };
 
   i18n.inputMethod = {
     enable = true;
@@ -67,8 +53,8 @@ in
     fcitx5 = {
       waylandFrontend = true; # Suppresses GTK/QT warning messages in Wayland
       addons = with pkgs; [
-        fcitx5-chinese-addons # Contains the Pinyin IME for Simplified Chinese
-        fcitx5-gtk            # Input support for GTK-based applications
+#        fcitx5-chinese-addons # Contains the Pinyin IME for Simplified Chinese
+ #       fcitx5-gtk            # Input support for GTK-based applications
       ];
     };
   };
@@ -113,6 +99,6 @@ in
   programs.rofi.enable = true;
 
   xdg.configFile."waybar".source = config.lib.file.mkOutOfStoreSymlink "/persist/etc/nixos/dotfiles/waybar/velvet";
-  xdg.configFile."hypr/hyprland.conf".source = config.lib.file.mkOutOfStoreSymlink "/persist/etc/nixos/dotfiles/hypr/hyprland.conf";
+  xdg.configFile."hypr/hyprland.lua".source = config.lib.file.mkOutOfStoreSymlink "/persist/etc/nixos/dotfiles/hypr/hyprland.lua";
   xdg.configFile."Kvantum/kvantum.kvconfig".enable = false;
 }
