@@ -108,6 +108,7 @@ let
     foxyproxy-standard
     bypass-paywalls-clean
     single-file
+    translate-web-pages
   ];
 
   firefoxExtensions = commonExtensions ++ (with pkgs.nur.repos.rycee.firefox-addons; [

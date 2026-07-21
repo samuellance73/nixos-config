@@ -9,7 +9,6 @@
       ".ssh"
       "Safe"
       ".var/app/app.zen_browser.zen"
-      ".config/Antigravity"
       ".local/share/Trash"
       ".config/mozilla/firefox/persistent"
     ];

@@ -20,6 +20,8 @@
         "www.wyoutube.com"
         "www.shellshock.io"
         "shellshock.io"
+        "florr.io"
+        "www.florr.io"
       ];
     };
     nameservers = [ "127.0.0.1" ];

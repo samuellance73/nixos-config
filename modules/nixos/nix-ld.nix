@@ -31,7 +31,6 @@
       # For Geph
       glib
       gtk3
-      webkitgtk_4_1
       pango
       cairo
       gdk-pixbuf

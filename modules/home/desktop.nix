@@ -53,8 +53,8 @@ in
     fcitx5 = {
       waylandFrontend = true; # Suppresses GTK/QT warning messages in Wayland
       addons = with pkgs; [
-#        fcitx5-chinese-addons # Contains the Pinyin IME for Simplified Chinese
- #       fcitx5-gtk            # Input support for GTK-based applications
+        qt6Packages.fcitx5-chinese-addons  # <--- Updated
+        fcitx5-gtk            # Input support for GTK-based applications
       ];
     };
   };
@@ -65,7 +65,7 @@ in
     ncdu proton-vpn gnome-clocks pavucontrol
     hyprsunset jq nerd-fonts.symbols-only
     nerd-fonts.jetbrains-mono wl-clipboard
-    epiphany bat ripgrep antigravity-fhs ffmpeg
+    epiphany bat ripgrep ffmpeg
     trash-cli mission-center chisel code-cursor-fhs obsidian easyeffects opencode
     calibre qview anki vlc localsend
   ];
@@ -97,6 +97,12 @@ in
   services.hyprpaper.enable = true;
   services.swaync.enable = true;
   programs.rofi.enable = true;
+
+  # Native Home Manager GNOME Keyring service
+  services.gnome-keyring = {
+    enable = true;
+    components = [ "pkcs11" "secrets" "ssh" ];
+  };
 
   xdg.configFile."waybar".source = config.lib.file.mkOutOfStoreSymlink "/persist/etc/nixos/dotfiles/waybar/velvet";
   xdg.configFile."hypr/hyprland.lua".source = config.lib.file.mkOutOfStoreSymlink "/persist/etc/nixos/dotfiles/hypr/hyprland.lua";

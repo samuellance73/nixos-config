@@ -16,8 +16,14 @@
   time.timeZone = "America/New_York";
   i18n.defaultLocale = "en_US.UTF-8";
   services.tailscale.enable = true;
+  # Enable GNOME Keyring daemon system-wide
   services.gnome.gnome-keyring.enable = true;
-  security.pam.services.login.enableGnomeKeyring = true;
+
+  # Enable PAM auto-unlock for both tty login AND sddm graphical login
+  security.pam.services = {
+    login.enableGnomeKeyring = true;
+    sddm.enableGnomeKeyring = true;
+  };
   security.polkit.enable = true;
 
   users.users = {
@@ -36,10 +42,17 @@
 
   programs = {
     mosh.enable = true;
-    nh.enable = true;
     git.enable = true;
     kdeconnect.enable = true;
     fish.enable = true;
+  };
+
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      extraArgs = "--keep-since 7d --keep 3"; # Keeps only 3 generations, up to 7 days old
+    };
   };
 
   services.flatpak.enable = true;
@@ -82,11 +95,6 @@
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       ];
       auto-optimise-store = true;
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
     };
   };
 }

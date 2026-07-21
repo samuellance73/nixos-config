@@ -25,7 +25,6 @@
               content = {
                 type = "luks";
                 name = "crypted";
-                settings.crypttabExtraOpts =[ "tpm2-device=auto" ];
                 settings.allowDiscards = true;
                 content = {
                   type = "btrfs";
