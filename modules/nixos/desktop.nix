@@ -60,4 +60,12 @@
   };
   services.gvfs.enable = true;
   services.tumbler.enable = true;
+
+  # Steam
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports for local network transfers
+  };
 }
