@@ -171,6 +171,14 @@ for i = 1, 9 do
     hl.bind(mainMod .. " + SHIFT + " .. i,     hl.dsp.window.move({ workspace = i }))
 end
 
+-- Workspaces 11 - 20 (SUPER + ALT + 1..0)
+for i = 1, 9 do
+    hl.bind(mainMod .. " + ALT + " .. i,       hl.dsp.focus({ workspace = i + 10 }))
+    hl.bind(mainMod .. " + ALT + SHIFT + " .. i, hl.dsp.window.move({ workspace = i + 10 }))
+end
+hl.bind(mainMod .. " + ALT + 0",               hl.dsp.focus({ workspace = 20 }))
+hl.bind(mainMod .. " + ALT + SHIFT + 0",       hl.dsp.window.move({ workspace = 20 }))
+
 -- Multimedia keys (volume and brightness)
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { locked = true, repeating = true })

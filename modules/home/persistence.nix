@@ -11,6 +11,7 @@
       ".var/app/app.zen_browser.zen"
       ".local/share/Trash"
       ".config/mozilla/firefox/persistent"
+      ".local/share/Steam"
     ];
   };
 }
