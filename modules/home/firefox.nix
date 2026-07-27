@@ -38,7 +38,6 @@ let
     # UI/UX
     "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
     "svg.context-properties.content.enabled" = true;
-    "sidebar.revamp" = true;
     "sidebar.verticalTabs" = false;
     "devtools.chrome.enabled" = true;
     "user.theme.catppuccin-mocha" = true;
@@ -63,7 +62,9 @@ let
 
     "widget.use-xdg-desktop-portal.file-picker" = 1;
 
-    
+    "browser.cache.memory.capacity" = 1048576;
+    "browser.cache.memory.max_entry_size" = 51200;
+
     "browser.newtabpage.pinned" = builtins.toJSON [
       {
         title = "NixOS Search";
@@ -87,8 +88,7 @@ let
   persistentSettings = ephemeralSettings // {
     # Don't clear on shutdown
     
-    "privacy.sanitize.sanitizeOnShutdown" = false;
-    "privacy.clearOnShutdown_v2.historyFormDataAndDownloads" = false;
+    "privacy.clearOnShutdown_v2.browsingHistoryAndDownloads" = false;
 
     # Restore session tabs on startup
     "browser.startup.page" = 3;

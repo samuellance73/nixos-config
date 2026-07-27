@@ -78,6 +78,7 @@
     rar         # Support for .rar
     gcc
     gnumake
+    openvpn
   ];
 
   nixpkgs.config = {
