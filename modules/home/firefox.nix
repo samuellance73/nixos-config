@@ -59,7 +59,8 @@ let
     "privacy.clearOnShutdown_v2.siteSettings" = false;
     "ultima.sidebery.autohide" = false;
     "ultima.tabs.tabbar.disabled" = true;
-
+    "devtools.debugger.remote-enabled" = true;
+    
     "widget.use-xdg-desktop-portal.file-picker" = 1;
 
     "browser.cache.memory.capacity" = 1048576;
