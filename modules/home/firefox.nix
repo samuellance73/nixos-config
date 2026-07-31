@@ -13,8 +13,8 @@ let
 
   # Fetch Betterfox user.js
   betterfox-js = builtins.fetchurl {
-    url = "https://raw.githubusercontent.com/yokoffing/Betterfox/150.0/user.js";
-    sha256 = "1bgwdzr8g0fdw9p2zw34scinj5684ag13kjr7di4b48lags5ccp8";
+    url = "https://raw.githubusercontent.com/yokoffing/Betterfox/152.0/user.js";
+    sha256 = "0z3b44q82ambb4mr9bhmbalfk4a1m5b3zs3d6w05nzg4wcb8kfd6";
   };
 
   betterfoxConfig = builtins.readFile betterfox-js;
@@ -60,11 +60,14 @@ let
     "ultima.sidebery.autohide" = false;
     "ultima.tabs.tabbar.disabled" = true;
     "devtools.debugger.remote-enabled" = true;
-    
+    "devtools.browsertoolbox.scope" = "parent-process";
+
     "widget.use-xdg-desktop-portal.file-picker" = 1;
 
     "browser.cache.memory.capacity" = 1048576;
     "browser.cache.memory.max_entry_size" = 51200;
+
+    "network.http.max-connections" = 1800;
 
     "browser.newtabpage.pinned" = builtins.toJSON [
       {

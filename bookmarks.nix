@@ -28,13 +28,18 @@
           }
           {
             name = "AI Studio (Account 2)";
-            url = "https://aistudio.google.com/u/1";
+            url = "https://aistudio.google.com/u/1/prompts/new_chat";
             keyword = "ai1";
           }
           {
             name = "AI Studio (Account 3)";
-            url = "https://aistudio.google.com/u/2";
+            url = "https://aistudio.google.com/u/2/prompts/new_chat";
             keyword = "ai2";
+          }
+          {
+            name = "AI Studio (Account 4)";
+            url = "https://aistudio.google.com/u/3/prompts/new_chat";
+            keyword = "ai3";
           }
           {
             name = "Claude";

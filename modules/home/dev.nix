@@ -27,5 +27,7 @@
     gost
     nodejs_24
     devin-desktop
+    godot_4
+    git-lfs
   ];
 }
