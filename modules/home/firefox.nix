@@ -69,6 +69,10 @@ let
 
     "network.http.max-connections" = 1800;
 
+    "extensions.webextensions.uuids" = builtins.toJSON {
+      "{3c078156-979c-498b-8990-85f7987dd929}" = "e5d248a5-5a80-437b-bc6a-3b29f7c1b957";
+    };
+
     "browser.newtabpage.pinned" = builtins.toJSON [
       {
         title = "NixOS Search";
@@ -110,7 +114,6 @@ let
     multi-account-containers
     sidebery
     foxyproxy-standard
-    bypass-paywalls-clean
     single-file
     translate-web-pages
   ];
@@ -206,6 +209,7 @@ in
         Allow = [
           "https://github.com"
           "https://accounts.google.com"
+          "https://claude.ai"
         ];
         Behavior = "reject-tracker-and-partition-foreign";
         Locked = true;
