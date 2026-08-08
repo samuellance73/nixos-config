@@ -167,6 +167,24 @@ in
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
           installation_mode = "force_installed";
         };
+
+        # 3. Firefox Multi-Account Containers
+        "@testpilot-containers" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/multi-account-containers/latest.xpi";
+          installation_mode = "normal_installed";
+        };
+
+        # 4. Temporary Containers
+        "{2b101103-6238-4e89-a29d-425785a9bc05}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/temporary-containers/latest.xpi";
+          installation_mode = "normal_installed";
+        };
+
+        # 5. SponsorBlock for YouTube
+        "sponsorBlocker@ajay.app" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
+          installation_mode = "normal_installed";
+        };
       };
 
       # Core

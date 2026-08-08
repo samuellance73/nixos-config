@@ -15,20 +15,21 @@
     
     impermanence.url = "github:nix-community/impermanence";
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nur.url = "github:nix-community/NUR"; 
+    nur.url = "github:nix-community/NUR";
+
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   # --- ADDED home-manager TO OUTPUTS ---
-  outputs = { self, nixpkgs, disko, impermanence, home-manager, stylix, ... }@inputs: {
+  outputs = { self, nixpkgs, disko, impermanence, home-manager, stylix, zen-browser, ... }@inputs: {
     # "latitude" is your hostname. You will use this in the install command.
     nixosConfigurations.latitude = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";

@@ -9,6 +9,7 @@
 {
   imports = [
     ./modules/home
+    inputs.zen-browser.homeModules.beta
   ];
 
   home.username = "trueking";
