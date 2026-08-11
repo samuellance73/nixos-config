@@ -3,7 +3,7 @@
 {
   programs.vscodium = {
     enable = true;
-    package = pkgs.vscodium-fhs;
+   
   };
 
   programs.git = {

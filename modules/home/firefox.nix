@@ -122,140 +122,17 @@ let
     ublock-origin
   ]);
 
-  commonContainers = {
-    sanctuary = {
-      id = 1;
-      name = "Sanctuary";
-      color = "blue";
-      icon = "circle";
-    };
-    forge = {
-      id = 2;
-      name = "Forge";
-      color = "orange";
-      icon = "briefcase";
-    };
-    bazaar = {
-      id = 3;
-      name = "Bazaar";
-      color = "green";
-      icon = "cart";
-    };
-    nexus = {
-      id = 4;
-      name = "Nexus";
-      color = "pink";
-      icon = "fingerprint";
-    };
-    vault = {
-      id = 5;
-      name = "Vault";
-      color = "purple";
-      icon = "dollar";
-    };
-  };
+  # Shared with zen-browser
+  commonPolicies = import ./browser-policies.nix;
+  commonContainers = import ./browser-containers.nix;
 in
 {
-  stylix.targets.firefox.profileNames = [ "ephemeral" "persistent" ];
+  stylix.targets.firefox.enable = false;
 
   programs.firefox = {
     enable = true;
 
-    policies = {
-      ExtensionSettings = {
-        "uBlock0@raymondhill.net" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
-          installation_mode = "force_installed";
-        };
-
-        # 3. Firefox Multi-Account Containers
-        "@testpilot-containers" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/multi-account-containers/latest.xpi";
-          installation_mode = "normal_installed";
-        };
-
-        # 4. Temporary Containers
-        "{2b101103-6238-4e89-a29d-425785a9bc05}" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/temporary-containers/latest.xpi";
-          installation_mode = "normal_installed";
-        };
-
-        # 5. SponsorBlock for YouTube
-        "sponsorBlocker@ajay.app" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
-          installation_mode = "normal_installed";
-        };
-      };
-
-      # Core
-      DisableTelemetry = true;
-      DisableFirefoxStudies = true;
-      DisablePocket = true;
-      DisableSystemAddonUpdate = true;
-      DontCheckDefaultBrowser = true;
-
-      # Privacy & Security
-      OfferToSaveLogins = false;
-      PasswordManagerEnabled = false;
-      AutofillAddressEnabled = false;
-      AutofillCreditCardEnabled = false;
-
-      # UI/UX
-      DisableFeedbackCommands = true;
-
-      OverrideFirstRunPage = "";
-      OverridePostUpdatePage = "";
-
-      # User Messaging
-      UserMessaging = {
-        ExtensionRecommendations = false;
-        FeatureRecommendations = false;
-        UrlbarInterventions = false;
-        SkipOnboarding = true;
-        MoreFromMozilla = false;
-        Locked = true;
-      };
-
-      FirefoxSuggest = {
-        WebSuggestions = false;
-        SponsoredSuggestions = false;
-        ImproveSuggest = false;
-        Locked = true;
-      };
-
-      Cookies = {
-        Allow = [
-          "https://github.com"
-          "https://accounts.google.com"
-          "https://claude.ai"
-        ];
-        Behavior = "reject-tracker-and-partition-foreign";
-        Locked = true;
-      };
-
-      # Home Page
-      FirefoxHome = {
-        Search = true;
-        TopSites = true;
-        SponsoredTopSites = false;
-        Highlights = false;
-        Pocket = false;
-        SponsoredStories = false;
-        Snippets = false;
-        Weather = false;
-      };
-
-      SearchEngines = {
-        PreventInstalls = false;
-        Remove = [
-          "Bing"
-          "Amazon.com"
-          "eBay"
-          "Twitter"
-          "Perplexity"
-        ];
-      };
-    };
+    policies = commonPolicies;
 
     profiles = {
       ephemeral = {

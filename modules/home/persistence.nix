@@ -9,8 +9,10 @@
       ".ssh"
       "Safe"
       ".var/app/app.zen_browser.zen"
+      ".config/zen"
       ".local/share/Trash"
       ".config/mozilla/firefox/persistent"
+      ".librewolf/custom"
       ".local/share/Steam"
     ];
   };

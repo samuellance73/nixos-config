@@ -68,7 +68,7 @@ in
     epiphany bat ripgrep ffmpeg
     trash-cli mission-center chisel code-cursor-fhs obsidian easyeffects opencode
     calibre qview anki vlc localsend
-    libsecret seahorse dolphin-emu
+    libsecret seahorse dolphin-emu eden
   ];
 
   xdg.mimeApps = {
