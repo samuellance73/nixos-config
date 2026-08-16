@@ -7,6 +7,8 @@ let
     "network.http.max-connections" = 1800;
     "privacy.sanitize.sanitizeOnShutdown" = true;
     "gfx.webrender.all" = true;
+    "browser.tabs.closeWindowWithLastTab" = false;
+    "zen.tabs.vertical" = true;
   };
 
   commonPolicies = import ./browser-policies.nix;
@@ -17,10 +19,6 @@ in
     ./firefox.nix
     ./librewolf.nix
   ];
-
-  programs.floorp = {
-    enable = true;
-  };
 
   programs.zen-browser = {
     enable = true;
@@ -92,6 +90,5 @@ in
     };
   };
 
-  stylix.targets.floorp.profileNames = [ "trueking" ];
   stylix.targets.zen-browser.enable = false;
 }
