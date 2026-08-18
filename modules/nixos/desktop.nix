@@ -7,10 +7,11 @@
 
   stylix = {
     enable = true;
-    image = ../../wallpapers/city-horizon.jpg;
+    image = ../../wallpapers/wallpaper.png;
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     targets.kmscon.enable = false;
+    targets.gdm.enable = true;
     cursor = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
@@ -19,7 +20,7 @@
   };
 
   # Display Manager and Windowing
-  services.displayManager.sddm.enable = true;
+  services.displayManager.gdm.enable = true;
   services.xserver.enable = true;
 
   programs.hyprland = {

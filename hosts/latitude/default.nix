@@ -14,6 +14,10 @@
 
     ];
     initrd.systemd.enable = true; 
+    plymouth = {
+      enable = true;
+      theme = "bgrt";
+    };
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;

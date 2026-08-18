@@ -60,7 +60,7 @@ in
   };
 
   home.packages = with pkgs; [
-    htop grim slurp libnotify hyprpolkitagent hyprlock
+    htop grim slurp libnotify hyprpolkitagent
     waybar bluez brightnessctl networkmanagerapplet micro
     ncdu proton-vpn gnome-clocks pavucontrol
     hyprsunset jq nerd-fonts.symbols-only
@@ -98,6 +98,15 @@ in
   services.hyprpaper.enable = true;
   services.swaync.enable = true;
   programs.rofi.enable = true;
+
+  programs.hyprlock = {
+    enable = true;
+    settings = {
+      background = [{
+        path = ../../wallpapers/wallpaper.png;
+      }];
+    };
+  };
 
   # Native Home Manager GNOME Keyring service
   services.gnome-keyring = {

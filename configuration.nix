@@ -19,10 +19,11 @@
   # Enable GNOME Keyring daemon system-wide
   services.gnome.gnome-keyring.enable = true;
 
-  # Enable PAM auto-unlock for both tty login AND sddm graphical login
+  # Enable PAM auto-unlock for both tty login AND gdm graphical login
   security.pam.services = {
     login.enableGnomeKeyring = true;
-    sddm.enableGnomeKeyring = true;
+    gdm.enableGnomeKeyring = true;
+    gdm-password.enableGnomeKeyring = true;
   };
   security.polkit.enable = true;
 
