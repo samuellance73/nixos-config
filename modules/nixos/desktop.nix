@@ -5,20 +5,6 @@
     nerd-fonts.jetbrains-mono
   ];
 
-  stylix = {
-    enable = true;
-    image = ../../wallpapers/wallpaper.png;
-    polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-    targets.kmscon.enable = false;
-    targets.gdm.enable = true;
-    cursor = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Ice";
-      size = 24;
-    };
-  };
-
   # Display Manager and Windowing
   services.displayManager.gdm.enable = true;
   services.xserver.enable = true;

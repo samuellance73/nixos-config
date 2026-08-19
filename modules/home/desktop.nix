@@ -34,16 +34,33 @@ in
   fonts.fontconfig.enable = true;
 
   home.pointerCursor = {
+    enable = true;
     gtk.enable = true;
     x11.enable = true;
-    hyprcursor = {
-      enable = true;
-      size = 24;
+    hyprcursor.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 24;
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
     };
   };
 
   gtk = {
     enable = true;
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+    };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk3";
+    style.name = "adwaita-dark";
   };
 
 
@@ -95,16 +112,23 @@ in
 
   services.playerctld.enable = true;
   services.cliphist.enable = true;
-  services.hyprpaper.enable = true;
+  services.swww = {
+    enable = true;
+  };
   services.swaync.enable = true;
-  programs.rofi.enable = true;
+  programs.rofi = {
+    enable = true;
+    # rofi-wayland has been merged into rofi (2.0.0) in current nixpkgs
+    # Option A: Built-in dark theme (1-liner)
+    theme = "Arc-Dark"; # Other built-ins: "solarized_alternate", "gruvbox-dark-hard"
+  };
 
   programs.hyprlock = {
     enable = true;
     settings = {
-      background = [{
-        path = ../../wallpapers/wallpaper.png;
-      }];
+      background = {
+        color = "rgb(0, 0, 0)";
+      };
     };
   };
 

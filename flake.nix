@@ -4,9 +4,6 @@
   inputs = {
     # Using NixOS unstable for the latest packages and Wayland updates
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    stylix = {
-      url = "github:nix-community/stylix";
-    };
 
     disko = {
       url = "github:nix-community/disko";
@@ -29,7 +26,7 @@
   };
 
   # --- ADDED home-manager TO OUTPUTS ---
-  outputs = { self, nixpkgs, disko, impermanence, home-manager, stylix, zen-browser, ... }@inputs: {
+  outputs = { self, nixpkgs, disko, impermanence, home-manager, zen-browser, ... }@inputs: {
     # "latitude" is your hostname. You will use this in the install command.
     nixosConfigurations.latitude = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -43,7 +40,6 @@
         disko.nixosModules.disko
         impermanence.nixosModules.impermanence
 
-        stylix.nixosModules.stylix
         ./hosts/latitude
 
         home-manager.nixosModules.home-manager {
