@@ -112,7 +112,7 @@ in
 
   services.playerctld.enable = true;
   services.cliphist.enable = true;
-  services.swww = {
+  services.awww = {
     enable = true;
   };
   services.swaync.enable = true;
@@ -126,9 +126,63 @@ in
   programs.hyprlock = {
     enable = true;
     settings = {
-      background = {
-        color = "rgb(0, 0, 0)";
+      general = {
+        hide_cursor = true;
+        ignore_empty_input = true;
       };
+
+      background = [
+        {
+          path = "/persist/etc/nixos/wallpapers/wallpaper.png";
+          blur_passes = 10;
+          blur_size = 12;
+          brightness = 0.25;
+          contrast = 0.8;
+          vibrancy = 0;
+        }
+      ];
+
+      label = [
+        {
+          monitor = "";
+          text = "cmd[update:1000] echo \"$(date +'%H:%M')\"";
+          color = "rgba(205, 214, 244, 1.0)";
+          font_size = 110;
+          font_family = "JetBrainsMono Nerd Font";
+          position = "0, -60";
+          halign = "center";
+          valign = "center";
+        }
+        {
+          monitor = "";
+          text = "cmd[update:1000] echo \"$(date +'%A, %d %B %Y')\"";
+          color = "rgba(148, 226, 213, 1.0)";
+          font_size = 22;
+          font_family = "JetBrainsMono Nerd Font";
+          position = "0, 30";
+          halign = "center";
+          valign = "center";
+        }
+      ];
+
+      input-field = [
+        {
+          monitor = "";
+          size = "300, 60";
+          position = "0, 160";
+          halign = "center";
+          valign = "center";
+          dots_center = true;
+          fade_on_empty = false;
+          font_color = "rgb(205, 214, 244)";
+          inner_color = "rgb(30, 30, 46)";
+          outer_color = "rgb(137, 180, 250)";
+          outline_thickness = 4;
+          rounding = 12;
+          placeholder_text = "<i>Password...</i>";
+          shadow_passes = 2;
+        }
+      ];
     };
   };
 
