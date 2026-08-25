@@ -76,7 +76,6 @@
     p7zip       # Support for .7z
     unzip       # Support for .zip
     zip
-    rar         # Support for .rar
     gcc
     gnumake
     openvpn

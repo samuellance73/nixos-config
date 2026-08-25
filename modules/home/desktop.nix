@@ -77,12 +77,12 @@ in
   };
 
   home.packages = with pkgs; [
-    htop grim slurp libnotify hyprpolkitagent
+    htop grim slurp libnotify hyprpolkitagent satty
     waybar bluez brightnessctl networkmanagerapplet micro
     ncdu proton-vpn gnome-clocks pavucontrol
     hyprsunset jq nerd-fonts.symbols-only
     nerd-fonts.jetbrains-mono wl-clipboard
-    epiphany bat ripgrep ffmpeg
+    bat ripgrep ffmpeg
     trash-cli mission-center chisel code-cursor-fhs obsidian easyeffects opencode
     calibre qview anki vlc localsend
     libsecret seahorse dolphin-emu eden

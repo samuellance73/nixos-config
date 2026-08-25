@@ -1,9 +1,17 @@
 { config, pkgs, ... }:
 
 {
-  programs.vscodium = {
+  programs.direnv = {
     enable = true;
-   
+    nix-direnv.enable = true;
+
+    enableBashIntegration = true;
+
+    enableFishIntegration = true;
+  };
+
+  programs.vscode = {
+    enable = true;
   };
 
   programs.git = {
@@ -26,6 +34,9 @@
     uv
     gost
     nodejs_24
+    bun
+    rustc
+    cargo
     devin-desktop
     godot_4
     git-lfs
