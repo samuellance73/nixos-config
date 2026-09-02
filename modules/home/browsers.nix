@@ -7,9 +7,7 @@ let
     "network.http.max-connections" = 1800;
     "privacy.sanitize.sanitizeOnShutdown" = true;
     "gfx.webrender.all" = true;
-    "browser.tabs.closeWindowWithLastTab" = false;
-    "zen.tabs.vertical" = true;
-  };
+   };
 
   commonPolicies = import ./browser-policies.nix;
   commonContainers = import ./browser-containers.nix;

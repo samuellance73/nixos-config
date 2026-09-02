@@ -36,11 +36,21 @@
 
   services.zapret = {
     enable = true;
+    
+
     params = [
-      "--dpi-desync=split2"
+ 
+      "--dpi-desync=fake"
+      "--dpi-desync-ttl=3"
+      "--dpi-desync-fake-tls=0x00000000"
+      "--dpi-desync-fake-tls=!"
+      "--dpi-desync-fake-tls-mod=rnd,rndsni,dupsid"
+    /*
+     "--dpi-desync=split2"
       "--dpi-desync-split-pos=midsld"
       "--dpi-desync-fooling=md5sig"
-      "--hostcase"
+      "--hostcase" 
+*/
     ];
   };
 

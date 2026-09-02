@@ -37,7 +37,7 @@ local firefox = "firefox"
 -------------------
 
 hl.on("hyprland.start", function()
-    hl.exec_cmd("systemctl --user start awww && awww img /persist/etc/nixos/wallpapers/wallpaper.png --transition-type wipe --transition-angle 45 --transition-step 90")
+    hl.exec_cmd("systemctl --user start awww && sleep 1 && awww img /persist/etc/nixos/wallpapers/wallpaper.png --transition-type wipe --transition-angle 45 --transition-step 90")
     hl.exec_cmd("waybar & nm-applet & hyprsunset --temperature 2000")
     hl.exec_cmd("systemctl --user start hyprpolkitagent && blueman-applet")
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
@@ -98,7 +98,7 @@ hl.animation({ leaf = "windowsOut",  enabled = true, speed = 2,   bezier = "winO
 hl.animation({ leaf = "windowsMove", enabled = true, speed = 2.5, bezier = "snappy", style = "slide" })
 hl.animation({ leaf = "workspaces",  enabled = true, speed = 3,   bezier = "silky",  style = "slide" })
 hl.animation({ leaf = "fade",        enabled = true, speed = 2,   bezier = "silky" })
-hl.animation({ leaf = "borderangle", enabled = true, speed = 25,  bezier = "linear", style = "loop" })
+hl.animation({ leaf = "borderangle", enabled = false })
 
 hl.gesture({
     fingers = 3,

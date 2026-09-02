@@ -81,8 +81,8 @@ in
     waybar bluez brightnessctl networkmanagerapplet micro
     ncdu proton-vpn gnome-clocks pavucontrol
     hyprsunset jq nerd-fonts.symbols-only
-    nerd-fonts.jetbrains-mono wl-clipboard
-    bat ripgrep ffmpeg
+    nerd-fonts.jetbrains-mono wl-clipboard wl-clip-persist
+    bat ripgrep ffmpeg tesseract
     trash-cli mission-center chisel code-cursor-fhs obsidian easyeffects opencode
     calibre qview anki vlc localsend
     libsecret seahorse dolphin-emu eden

@@ -38,7 +38,7 @@ let
     # UI/UX
     "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
     "svg.context-properties.content.enabled" = true;
-    "sidebar.verticalTabs" = false;
+    "sidebar.verticalTabs" = true;
     "devtools.chrome.enabled" = true;
     "user.theme.catppuccin-mocha" = true;
     "browser.tabs.closeWindowWithLastTab" = false;

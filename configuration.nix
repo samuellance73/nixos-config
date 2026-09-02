@@ -73,7 +73,8 @@
     eza
     tmux
     file-roller # The GUI archive manager
-    p7zip       # Support for .7z
+    _7zz        # Support for .7z
+    unrar       # Support for .rar
     unzip       # Support for .zip
     zip
     gcc
